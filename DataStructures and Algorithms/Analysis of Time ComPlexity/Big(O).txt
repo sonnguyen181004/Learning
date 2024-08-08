@@ -46,9 +46,9 @@ Problem:
 1.Hàm này nhận vào hai tham số kiểu số nguyên x và y, sau đó tính tổng của hai số này và trả về kết quả.
 Dòng 2: thực hiện phép cộng x + y và gán kết quả vào biến result.
 Dòng 3: trả về giá trị của result.
-Tổng số phép toán cần thực hiện là 6 phép (4 ở dòng 2 và 2 ở dòng 3). Tuy nhiên, con số này không phụ thuộc vào kích thước của đầu vào, nghĩa là bất kể giá trị của x và y lớn hay nhỏ, số phép toán vẫn như vậy.
+Tổng số phép toán cần thực hiện là 6 phép (4 ở dòng 2 và 2 ở dòng 3). con số này không phụ thuộc vào kích thước của đầu vào, nghĩa là bất kể giá trị của x và y lớn hay nhỏ, số phép toán vẫn như vậy.
 Do đó, độ phức tạp thời gian của hàm này là hằng số, ký hiệu là O(1).
 
 2.Hàm này nhận vào một mảng arr và một chỉ số i, sau đó trả về giá trị tại vị trí thứ i trong mảng.
 Việc truy cập một phần tử trong mảng là một thao tác có độ phức tạp thời gian không đổi, vì bất kể kích thước của mảng, thời gian để truy cập vào một phần tử cụ thể luôn không thay đổi.
-Do đó, độ phức tạp thời gian của hàm này cũng là O(1).
+độ phức tạp thời gian của hàm này cũng là O(1).
