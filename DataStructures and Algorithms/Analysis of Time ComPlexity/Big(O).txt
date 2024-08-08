@@ -1,4 +1,4 @@
---------------------------------------------------------Rule Of Big (O)---------------------------------------------
+-------------------------------------------------------------Rule Of Big (O)-------------------------------------------------------
 -Thao tác gán mất 1 đvi thời gian(unit of time)(Assignment operation)
 ex:
    int x=5;--->1 unit of time
@@ -29,13 +29,26 @@ Hằng số 3 trước n^    cũng không quan trọng khi xác định Big O.�
 
 
 
-----------------------------------Calculating Time Complexity of Constant Algorithm(Big O)------------------------------
+------------------------------------------------Calculating Time Complexity of Constant Algorithm(Big O)--------------------------------
 
 Problem:
 1.public int sum(int x,int y){                       line no      operations     unit time
-  int result=x+y;                                    2            1+1+1+1        4
-  return result;                                     3            1+1            2
-  }
-2. public int get(int[] arr,int i){
+  int result=x+y;                                    2            1+1+1+1        4                   phep gan rs=>1 unit         
+                                                                                                                  
+  return result;                                     3            1+1            2                    +==>1 unit, 
+  }                                                                                                 truy cap x,y=>2unit
+2. public int get(int[] arr,int i){                                                                line 3 lay gt cua rs==>1 unit),result=>1unit
  return arr[i];
 }
+
+
+
+1.Hàm này nhận vào hai tham số kiểu số nguyên x và y, sau đó tính tổng của hai số này và trả về kết quả.
+Dòng 2: thực hiện phép cộng x + y và gán kết quả vào biến result.
+Dòng 3: trả về giá trị của result.
+Tổng số phép toán cần thực hiện là 6 phép (4 ở dòng 2 và 2 ở dòng 3). Tuy nhiên, con số này không phụ thuộc vào kích thước của đầu vào, nghĩa là bất kể giá trị của x và y lớn hay nhỏ, số phép toán vẫn như vậy.
+Do đó, độ phức tạp thời gian của hàm này là hằng số, ký hiệu là O(1).
+
+2.Hàm này nhận vào một mảng arr và một chỉ số i, sau đó trả về giá trị tại vị trí thứ i trong mảng.
+Việc truy cập một phần tử trong mảng là một thao tác có độ phức tạp thời gian không đổi, vì bất kể kích thước của mảng, thời gian để truy cập vào một phần tử cụ thể luôn không thay đổi.
+Do đó, độ phức tạp thời gian của hàm này cũng là O(1).
