@@ -1,1 +1,41 @@
-Rule Of Big (O)
+--------------------------------------------------------Rule Of Big (O)---------------------------------------------
+-Thao tác gán mất 1 đvi thời gian(unit of time)(Assignment operation)
+ex:
+   int x=5;--->1 unit of time
+-Câu lệnh return cũng vậy
+   return x;---> 1unit of time
+
+-Arithmetical opertation(phép toán số hoc)
+  ex :x+y--> 1 unit of time
+-Logical operation
+   ex: x&&y--> 1 unit of time
+-Other small/single operations takes 1 unit of time
+-Bỏ qua các bậc thấp hơn (Drop lower order terms):
+  Trong đánh giá hiệu suất, các thuật ngữ có bậc thấp hơn thường được bỏ qua để tập trung vào các thuật ngữ có ảnh hưởng lớn nhất đến thời gian thực thi.
+
+  ex:Biểu thức thời gian T = n^2 + 3n + 1 biểu thị tổng thời gian cần thiết cho thuật toán thực hiện với kích thước đầu vào n.
+     n^2, 3n, và 1 là các thành phần của biểu thức, với n^2 là bậc cao nhất.n^2 sẽ có ảnh hưởng lớn nhất đến tổng thời gian chạy,  các thành phần bậc thấp hơn như 
+     3n 
+     và 1 không đáng kể.,  có thể bỏ qua các thành phần này để đơn giản hóa biểu thức thành O(n^2).
+
+
+    Dropping Constants and Lower Order Terms: Khi xác định Big O, ta chỉ cần quan tâm đến yếu tố có tốc độ tăng nhanh nhất và bỏ qua các hằng số và các thành phần 
+    có bậc thấp hơn.
+    ex:T=3n^2+6n+===>O(n^2)
+    3n^2 là thành phần có tốc độ tăng nhanh nhất khi n lớn lên.   6n và 1 có tốc độ tăng chậm hơn nhiều so với n^2 khi n lớn
+
+Hằng số 3 trước n^    cũng không quan trọng khi xác định Big O.ộ phức tạp của thuật toán được xác định là O(n^2)
+
+
+
+
+----------------------------------Calculating Time Complexity of Constant Algorithm(Big O)------------------------------
+
+Problem:
+1.public int sum(int x,int y){                       line no      operations     unit time
+  int result=x+y;                                    2            1+1+1+1        4
+  return result;                                     3            1+1            2
+  }
+2. public int get(int[] arr,int i){
+ return arr[i];
+}
