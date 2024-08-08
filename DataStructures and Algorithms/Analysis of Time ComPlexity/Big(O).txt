@@ -52,3 +52,40 @@ Do đó, độ phức tạp thời gian của hàm này là hằng số, ký hi�
 2.Hàm này nhận vào một mảng arr và một chỉ số i, sau đó trả về giá trị tại vị trí thứ i trong mảng.
 Việc truy cập một phần tử trong mảng là một thao tác có độ phức tạp thời gian không đổi, vì bất kể kích thước của mảng, thời gian để truy cập vào một phần tử cụ thể luôn không thay đổi.
 độ phức tạp thời gian của hàm này cũng là O(1).
+
+
+
+example:
+public void findSum(int n) 
+Line 2int sum=0;//1 step
+Line 3:for(int i=1;i<=n;i++){
+Line 4sum=sum+i;
+}
+Line 6return sum; 1 step
+}
+
+
+Line no                                   operations     unit time
+2 gán sum=0==>                              1             1 
+
+3                                           1+３(n+1)+3n    6n+4
+
+ 4                                            n(1+1+1+1)    4n
+
+6 return 1 thao tác truy cập sum 1 thao tác        1+1    2
+
+
+Line 1:biến số nguyên i gán với giá gtri    
+i<=n : truy cập i,n,<= là 3 thao tác
+giả sử n =3 thì i<=n thực thi 4 lần đẻ i=4 k thỏa dk có thêm 3 thao tác trong mỗi bước nên tổng số thao tác (operations) là 1+3(n+1)
+i++ : truy cập i,tăng giá trị i và gán lại vào i==> 3 thao tác.khi n=3 i++ được thực hiên 3 lần==>　thực hiên n lần==>3n===> unit time =6n+4
+
+Line 4 :sum=sum+i;
+truy cập 1 1 thao tác,truy cập sum thành 2 ttac phép cộng thành 3 thao tác và gán lại cho tổng=>4 thao tác
+Vì vòng lặp for đang lặp lại n lần vì đang đi từ 1 đến n=> line 4 cũng sẽ thực thi n lần
+
+T=10n+7( cộng hết lại)
+ trong Big(O) bỏ qua các số hạng bậc thấp hơn==>T=10n
+-- bỏ qua các số nhân k đổi
+===> Time Complexity=O(n)
++ thời gian thực hiện tỉ lệ thuẩn vói kích thươc đầu vào
