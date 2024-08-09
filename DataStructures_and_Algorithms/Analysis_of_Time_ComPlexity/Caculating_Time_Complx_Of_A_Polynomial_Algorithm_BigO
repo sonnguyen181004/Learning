@@ -9,3 +9,29 @@ public void print(int n){
 s.o.p("End of outer loop");
 
 }
+
+
+Line 3:biến số nguyên i gán với giá gtri    
+i<=n : truy cập i,n,<= là 3 thao tác
+giả sử n =3 thì i<=n thực thi 4 lần đẻ i=4 k thỏa dk ,có thêm 3 thao tác trong mỗi bước nên (operations) là 1+3(n+1)
+i++ : truy cập i,tăng giá trị i và gán lại vào i==> 3 thao tác.khi n=3 i++ được thực hiên 3 lần==>　thực hiên n lần==>3n===> unit time =6n+4
+
+Line 4:cũng giống như vậy nhưng phụ thuộc vào vòng for ở bên ngoài khi vòng for bên ngoài chạy n lần thì cũng chạy n lần==>
+n(1+3n+3+3n)=6n^2+4n;
+Line 6: truy cập i,truy cập j , in ra ==> 3 operations tuy   vì phụ thuộc vào 2 vòng lặp chạy n lần thì sẽ in ra n^2 lần==>n^2(1+1+1)= 3n^2
+-----------OUTPUT:
+giả sử n=2
+i=1;j=1
+i=1;j=2
+
+End of inner loop
+
+i=2;j=1;
+i=2;j=2;
+End of Inner loop
+End of outer loop
+Line 7 ;ttac in ra mh==1 operations tuy nhiên phụ thuộc vào vòng lặp i chạy n lần thì in ra n lần==>n(1)=n
+line 9 ttac in ra==>1 operations
+T=6n+4+6n^2+4n+3n^2+n+1
+=9n^2+11n+6
+bỏ 
