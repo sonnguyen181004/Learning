@@ -1,4 +1,4 @@
-Problem:
+Problem:thuật toán đa thức
 public void print(int n){
  for(int i=1;i<=n;i++){
    for(int j=1;j<=n;j++){
@@ -33,5 +33,7 @@ End of outer loop
 Line 7 ;ttac in ra mh==1 operations tuy nhiên phụ thuộc vào vòng lặp i chạy n lần thì in ra n lần==>n(1)=n
 line 9 ttac in ra==>1 operations
 T=6n+4+6n^2+4n+3n^2+n+1
-=9n^2+11n+6
-bỏ 
+=9n^2+11n+5
+bỏ qua các số hạng bậc thấp hơn và các số nhân k đổi==>Time Complexity=O(n^2);
+==> thuật toán k tốt vì thời gian thực hiện lâu .Khối lượng dữ liêu tăng lên thì thời gian thực hiện sẽ tăng lên n^2 vì thời gian tỉ lệ thuận với n^2 
+
