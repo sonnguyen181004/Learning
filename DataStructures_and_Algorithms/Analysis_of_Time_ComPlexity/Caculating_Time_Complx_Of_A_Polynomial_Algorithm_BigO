@@ -1,0 +1,11 @@
+Problem:
+public void print(int n){
+ for(int i=1;i<=n;i++){
+   for(int j=1;j<=n;j++){
+      s.o.p("i="+i+",j="+j;
+   }
+   s.o.p("end of inner loop);
+ }
+s.o.p("End of outer loop");
+
+}
