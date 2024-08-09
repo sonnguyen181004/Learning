@@ -1,0 +1,91 @@
+-------------------------------------------------------------Rule Of Big (O)-------------------------------------------------------
+-Thao tác gán mất 1 đvi thời gian(unit of time)(Assignment operation)
+ex:
+   int x=5;--->1 unit of time
+-Câu lệnh return cũng vậy
+   return x;---> 1unit of time
+
+-Arithmetical opertation(phép toán số hoc)
+  ex :x+y--> 1 unit of time
+-Logical operation
+   ex: x&&y--> 1 unit of time
+-Other small/single operations takes 1 unit of time
+-Bỏ qua các bậc thấp hơn (Drop lower order terms):
+  Trong đánh giá hiệu suất, các thuật ngữ có bậc thấp hơn thường được bỏ qua để tập trung vào các thuật ngữ có ảnh hưởng lớn nhất đến thời gian thực thi.
+
+  ex:Biểu thức thời gian T = n^2 + 3n + 1 biểu thị tổng thời gian cần thiết cho thuật toán thực hiện với kích thước đầu vào n.
+     n^2, 3n, và 1 là các thành phần của biểu thức, với n^2 là bậc cao nhất.n^2 sẽ có ảnh hưởng lớn nhất đến tổng thời gian chạy,  các thành phần bậc thấp hơn như 
+     3n 
+     và 1 không đáng kể.,  có thể bỏ qua các thành phần này để đơn giản hóa biểu thức thành O(n^2).
+
+
+    Dropping Constants and Lower Order Terms: Khi xác định Big O, ta chỉ cần quan tâm đến yếu tố có tốc độ tăng nhanh nhất và bỏ qua các hằng số và các thành phần 
+    có bậc thấp hơn.
+    ex:T=3n^2+6n+===>O(n^2)
+    3n^2 là thành phần có tốc độ tăng nhanh nhất khi n lớn lên.   6n và 1 có tốc độ tăng chậm hơn nhiều so với n^2 khi n lớn
+
+Hằng số 3 trước n^    cũng không quan trọng khi xác định Big O.ộ phức tạp của thuật toán được xác định là O(n^2)
+
+
+
+
+------------------------------------------------Calculating Time Complexity of Constant Algorithm(Big O)--------------------------------
+
+Problem:
+1.public int sum(int x,int y){                       line no      operations     unit time
+  int result=x+y;                                    2            1+1+1+1        4                   phep gan rs=>1 unit         
+                                                                                                                  
+  return result;                                     3            1+1            2                    +==>1 unit, 
+  }                                                                                                 truy cap x,y=>2unit
+2. public int get(int[] arr,int i){                                                                line 3 lay gt cua rs==>1 unit),result=>1unit
+ return arr[i];
+}
+
+
+
+1.Hàm này nhận vào hai tham số kiểu số nguyên x và y, sau đó tính tổng của hai số này và trả về kết quả.
+Dòng 2: thực hiện phép cộng x + y và gán kết quả vào biến result.
+Dòng 3: trả về giá trị của result.
+Tổng số phép toán cần thực hiện là 6 phép (4 ở dòng 2 và 2 ở dòng 3). con số này không phụ thuộc vào kích thước của đầu vào, nghĩa là bất kể giá trị của x và y lớn hay nhỏ, số phép toán vẫn như vậy.
+Do đó, độ phức tạp thời gian của hàm này là hằng số, ký hiệu là O(1).
+
+2.Hàm này nhận vào một mảng arr và một chỉ số i, sau đó trả về giá trị tại vị trí thứ i trong mảng.
+Việc truy cập một phần tử trong mảng là một thao tác có độ phức tạp thời gian không đổi, vì bất kể kích thước của mảng, thời gian để truy cập vào một phần tử cụ thể luôn không thay đổi.
+độ phức tạp thời gian của hàm này cũng là O(1).
+
+
+
+example:
+public void findSum(int n) 
+Line 2int sum=0;//1 step
+Line 3:for(int i=1;i<=n;i++){
+Line 4sum=sum+i;
+}
+Line 6return sum; 1 step
+}
+
+
+Line no                                   operations     unit time
+2 gán sum=0==>                              1             1 
+
+3                                           1+３(n+1)+3n    6n+4
+
+ 4                                            n(1+1+1+1)    4n
+
+6 return 1 thao tác truy cập sum 1 thao tác        1+1    2
+
+
+Line 1:biến số nguyên i gán với giá gtri    
+i<=n : truy cập i,n,<= là 3 thao tác
+giả sử n =3 thì i<=n thực thi 4 lần đẻ i=4 k thỏa dk có thêm 3 thao tác trong mỗi bước nên tổng số thao tác (operations) là 1+3(n+1)
+i++ : truy cập i,tăng giá trị i và gán lại vào i==> 3 thao tác.khi n=3 i++ được thực hiên 3 lần==>　thực hiên n lần==>3n===> unit time =6n+4
+
+Line 4 :sum=sum+i;
+truy cập 1 1 thao tác,truy cập sum thành 2 ttac phép cộng thành 3 thao tác và gán lại cho tổng=>4 thao tác
+Vì vòng lặp for đang lặp lại n lần vì đang đi từ 1 đến n=> line 4 cũng sẽ thực thi n lần
+
+T=10n+7( cộng hết lại)
+ trong Big(O) bỏ qua các số hạng bậc thấp hơn==>T=10n
+-- bỏ qua các số nhân k đổi
+===> Time Complexity=O(n)
++ thời gian thực hiện tỉ lệ thuẩn vói kích thươc đầu vào
