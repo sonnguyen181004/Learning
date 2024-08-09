@@ -1,0 +1,12 @@
+Cú pháp khai báo mảng:
+dataType arrayName[];
+dataType[] arrayName;
+ex:
+   int myArray[];
+   int[] myArray[];
+One Dimensional array can be initialized via syntax-
+ arrayName=new dataType[size];
+có thể vừa khai báo và khởi tạo mảng bằng cu pháp
+dataType[] arrayName=new dataType[size]
+dataType arrayName[]=new dataType[size]
+
