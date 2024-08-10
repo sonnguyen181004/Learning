@@ -41,3 +41,5 @@ Khởi tạo result:
 Phép khởi tạo  có độ phức tạp O(1).
 Vòng lặp thứ hai:
 Độ phức tạp là O(n), vì nó phải duyệt qua tất cả các phần tử của mảng để sao chép các số lẻ vào mảng result.
+Time Of Complexity===> O(m)
+
