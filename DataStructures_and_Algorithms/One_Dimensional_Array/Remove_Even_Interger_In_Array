@@ -1,5 +1,43 @@
 Input arr={3,2,4,7,10,6,5}
 Output arr={3,7,5]
             
+public int[] removeEven(int[] arr) {
+    int oddCount = 0;
+    for (int i = 0; i < arr.length; i++) {
+        if (arr[i] % 2 != 0) {
+            oddCount++;
+        }
+    }
+--
+    int[] result = new int[oddCount];
+    int idx = 0;
+    for (int i = 0; i < arr.length; i++) {
+        if (arr[i] % 2 != 0) {
+            result[idx] = arr[i];
+            idx++;
+        }
+    }
+    return result;
+}
 
+Giải thích:
+biến oddCount được khởi tạo bằng 0
+Vòng lặp for chạy qua từng phần tử trong mảng arr
+điều kiện if(arr[i] % 2 != 0) kiểm tra  có phải là số lẻ không 
+Nếu đk đúng tăng oddCount lên 1
 
+Mảng result được tạo với kích thước là oddCount.
+Biến idx được khởi tạo bằng 0 để giữ vị trí trong mảng result.
+
+for thứ hai lặp lại qua từng phần tử trong mảng arr
+Điều kiện if(arr[i] % 2 != 0) kiểm tra xem đó có phải là số lẻ không.
+Nếu đk đúng phần tử đó được sao chép vào mảng result tại vị trí idx, sau đó idx được tăng lên 1 để tiếp tục sao chép giả trị idx của 
+---------
+Độ phức tạp của thuật toán:
+Vòng lặp đầu 
+Độ phức tạp là O(n), vì nó phải duyệt qua tất cả các phần tử của mảng để đếm số lượng số lẻ.
+Khởi tạo result:
+
+Phép khởi tạo  có độ phức tạp O(1).
+Vòng lặp thứ hai:
+Độ phức tạp là O(n), vì nó phải duyệt qua tất cả các phần tử của mảng để sao chép các số lẻ vào mảng result.
