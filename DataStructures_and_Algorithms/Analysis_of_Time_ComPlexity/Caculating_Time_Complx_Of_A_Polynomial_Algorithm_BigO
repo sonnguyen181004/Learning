@@ -8,7 +8,7 @@ public void print(int n){
  }
 s.o.p("End of outer loop");
 
-}
+}.
 
 
 Line 3:biến số nguyên i gán với giá gtri    
