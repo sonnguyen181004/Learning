@@ -1,1 +1,23 @@
-1
+void reverseArray(int numbers[], int start, int end) {
+    while (start < end) {
+        int temp = numbers[start];
+        numbers[start] = numbers[end];
+        numbers[end] = temp;
+        start++;
+        end--;
+    }
+}
+
+ while(start < end)
+
+Vòng lặp  chạy cho đến khi start lon honend laf khi hai chỉ số này gặp nhau hoặc vượt qua nhau.
+Hoán đổi giá trị tại các vị trí start và end
+
+int temp = numbers[start];: Lưu trữ tạm thời giá trị tại vị trí start.
+numbers[start] = numbers[end] Đặt giá trị tại vị trí end vào vị trí start.
+numbers[end] = temp giá trị tạm thời giá trị  của start vào  gia tri idex end.
+
+
+start++ Tăng chỉ số start lên 1 để tiến về phía cuối mảng.
+end-- Giảm chỉ số end xuống 1 để tiến về phía đầu mảng.
+vòng lặp kết thúc, mảng numbers[] sẽ được đảo ngược từ vị trí start đến end.
