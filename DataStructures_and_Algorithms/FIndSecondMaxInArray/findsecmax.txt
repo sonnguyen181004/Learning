@@ -1,1 +1,66 @@
-1
+problem
+
+int findSecondMax(int[] arr) {
+    int max = Integer.MIN_VALUE;
+    int secondMax = Integer.MIN_VALUE;
+    for(int i = 0; i < arr.length; i++) {
+        if(arr[i] > max) {
+            secondMax = max;
+            max = arr[i];
+        } else if(arr[i] > secondMax && arr[i] != max) {
+            secondMax = arr[i];
+        }
+    }
+    return secondMax;
+}
+
+----------------------------------
+
+
+max và secondMax  được khởi tạo bằng Integer.MIN_VALUE: giá trị nhỏ nhất có thể của kiểu int. Điều này đảm bảo rằng bất kỳ giá trị nào trong mảng đều lớn hơn hoặc bằng giá trị khởi tạo này.
+
+
+for(int i = 0; i < arr.length; i++): 
+Điều kiện kiểm tra
+
+ if(arr[i] > max):
+
+Mỗi lần lặp,  sẽ kiểm tra xem phần tử hiện tại arr[i] có lớn hơn max hay không.
+Nếu arr[i] lớn hơn max
+Gán giá trị hiện tại của max cho secondMax.
+Cập nhật max bằng giá trị mới của arr[i].
+ nghĩa là nếu tìm thấy một giá trị lớn hơn max hiện tại,  giá trị max cũ sẽ trở thành secondMax, và max sẽ được cập nhật với giá trị lớn hơn mới.
+else if(arr[i] > secondMax && arr[i] != max):
+
+Nếu arr[i] không lớn hơn max ( không thể trở thành giá trị lớn nhất), phương thức sẽ kiểm tra xem arr[i] có lớn hơn secondMax và không bằng max hay không.
+Nếu điều kiện này đúng, arr[i] sẽ được gán cho secondMax.
+đảm bảo rằng secondMax luôn là giá trị lớn nhất tiếp theo sau max.
+
+--------------------------------------------------------------
+
+Ví dụ với mảng {3, 1, 4, 2, 5}:
+Lần lặp thứ 1 (i = 0): arr[0] = 3
+
+3 > max (3 > Integer.MIN_VALUE), vì vậy
+secondMax = max (tức secondMax = Integer.MIN_VALUE)
+max = 3
+Lần lặp thứ 2 (i = 1): arr[1] = 1
+
+1 không lớn hơn max, và 1 cũng không lớn hơn secondMax (vì secondMax hiện tại là Integer.MIN_VALUE), nên không có gì thay đổi.
+Lần lặp thứ 3 (i = 2): arr[2] = 4
+
+4 > max (4 > 3), vì vậy:
+secondMax = max (tức secondMax = 3)
+max = 4
+Lần lặp thứ 4 (i = 3): arr[3] = 2
+
+2 không lớn hơn max (2 < 4), nhưng cũng không lớn hơn secondMax (2 < 3), vì vậy:
+Không có gì thay đổi, secondMax vẫn là 3.
+Lần lặp thứ 5 (i = 4): arr[4] = 5
+
+5 > max (5 > 4), vì vậy:
+secondMax = max (tức secondMax = 4)
+max = 5
+Kết quả cuối cùng:
+max = 5
+secondMax = 4
