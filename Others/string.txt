@@ -1,0 +1,51 @@
+chuỗi bằng == và equals() sự khác biệt q
+== : Trong Java, == không so sánh nội dung của hai chuỗi, mà so sánh xem hai biến chuỗi có cùng tham chiếu tới cùng một đối tượng
+trong bộ nhớ hay không. Nếu hai chuỗi là cùng một đối tượng thì == trả về true ngược lại thì trả về false.
+
+ex:
+String str1 = "hello";
+String str2 = "hello";
+String str3 = new String("hello");
+
+System.out.println(str1 == str2); // Trả về true vì str1 và str2 tham chiếu tới cùng một đối tượng trong pool chuỗi.
+System.out.println(str1 == str3); // Trả về false vì str3 là một đối tượng mới.
+equals() (phương thức so sánh nội dung): Phương thức này so sánh nội dung của hai chuỗi, tức là nó kiểm tra xem hai chuỗi
+có cùng ký tự theo thứ tự hay không. Nếu nội dung giống nhau, nó sẽ trả về true, ngược lại trả về false.
+
+ex:
+String str1 = "hello";
+String str2 = "hello";
+String str3 = new String("hello");
+
+System.out.println(str1.equals(str2)); // Trả về true vì nội dung giống nhau.
+System.out.println(str1.equals(str3)); // Trả về true vì nội dung giống nhau.
+--------------------------------------------------------------------------------------------------------
+
+
+String pool (hay còn gọi là "chuỗi trong bộ nhớ tĩnh") là một cơ chế quản lý bộ nhớ trong Java được dùng để tối ưu hóa việc lưu
+trữ các chuỗi. Khi một chuỗi được tạo ra bằng cách sử dụng dấu ngoặc kép (ví dụ: String str = "hello";), Java sẽ kiểm tra xem chuỗi đó 
+tồn tại trong String pool chưa.
+
+Nếu chuỗi đã tồn tại trong String pool, Java sẽ không tạo một đối tượng chuỗi mới mà sẽ sử dụng tham chiếu tới chuỗi đã có trong pool.
+Nếu chuỗi chưa tồn tại trong String pool, Java sẽ tạo một đối tượng chuỗi mới và thêm nó vào pool.
+Cơ chế này giúp tiết kiệm bộ nhớ bằng cách tái sử dụng các chuỗi đã tồn tại thay vì tạo ra nhiều đối tượng chuỗi có cùng nội dung.
+
+ex:
+String str1 = "hello";
+String str2 = "hello";
+
+System.out.println(str1 == str2); // Trả về true vì cả hai biến đều tham chiếu đến cùng một chuỗi trong String pool.
+Tuy nhiên, nếu bạn tạo chuỗi bằng từ khóa new, chuỗi đó sẽ không được thêm vào String pool mà sẽ tạo ra một đối tượng mới trong bộ nhớ heap:
+
+
+String str3 = new String("hello");
+
+System.out.println(str1 == str3); // Trả về false vì str3 là một đối tượng mới, không thuộc String pool.
+Bạn có thể thêm một chuỗi vào String pool bằng cách sử dụng phương thức intern():
+
+java
+Copy code
+String str4 = new String("hello").intern();
+
+System.out.println(str1 == str4); // Trả về true vì str4 được thêm vào String pool và tham chiếu đến cùng chuỗi với str1.
+Tóm lại, String pool là một phần quan trọng giúp Java quản lý bộ nhớ hiệu quả hơn khi làm việc với các chuỗi.
