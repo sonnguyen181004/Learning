@@ -1,1 +1,37 @@
-1
+public void resize(int[] arr, int capacity) {
+    int[] temp = new int[capacity];
+    for(int i = 0; i < arr.length; i++) {
+        temp[i] = arr[i];
+    }
+    arr=temp;
+}
+đoạn code có lỗi :sau khi array dc gán lại vào mảng temp trong phương thưc resize
+
+sự thay đổi này chỉ có hiệu lực bên trong phương thức và không thay đổi được mảng ban đầu bên ngoài phương thức.
+Khi gán arr = temp; bên trong phương thức chỉ thay đổi tham chiếu cục bộ arr (chỉ có hiệu lực trong phương thức).  sẽ mất khi phương thức kết thúc. Bên ngoài phương thứcmảng arr vẫn trỏ đến mảng ban đầu không  bị thay đổi.
+
+Khi  thay đổi các phần tử của mảng trong phương thức, mảng gốc bên ngoài cũng bị thay đổi vì cả hai tham chiếu đều trỏ đến cùng một mảng.
+ gán lại một tham chiếu mới cho mảng arr bên trong phương thức  chỉ thay đổi cục bộ bên trong phương thức  không thay đổi được tham chiếu gốc bên ngoài 
+-----
+ kiểu trả về của phương thuc  được thay đổi từ void thành int[] để trả về mảng kiểu int
+
+
+void: Phương thức này không trả về bất cứ giá trị nào. Nó chỉ thực hiện một số thao tác rồi kết thúc
+int[]: Phương thức này sẽ trả về một mảng các số nguyên Khi dùng return temp;, mảng temp sẽ được trả về để sử dụng bên ngoài phương thức
+
+
+-----------
+Truyền tham chiếu (Pass by Reference): Với các đối tượng (như mảng), truyền bản sao của tham chiếu đến đối tượng đó. Tham chiếu này hoạt động giống như một địa chỉ liên kết tới đối tượng gốc
+
+
+----------sau khi sửa code
+
+public int[] resize(int[] arr, int capacity) {
+    int[] temp = new int[capacity]; 
+    for(int i = 0; i < arr.length; i++) {
+        temp[i] = arr[i]; 
+    }
+    return temp;  
+}
+
+arr = resize(arr, newCapacity);
