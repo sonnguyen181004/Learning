@@ -1,0 +1,28 @@
+StringBuilder và StringBuffer là hai lớp trong Java được sử dụng để làm việc với các chuỗi có thể thay đổi (mutable strings)
+. Khác với lớp String, các chuỗi trong StringBuilder và StringBuffer có thể được thay đổi mà không tạo ra đối tượng mới mỗi khi
+thực hiện thao tác chỉnh sửa.
+
+1. StringBuilder
+Tính chất: StringBuilder cho phép thay đổi nội dung chuỗi một cách linh hoạt mà không cần tạo ra đối tượng mới. 
+Điều này giúp tối ưu hóa hiệu suất khi thực hiện nhiều thao tác nối chuỗi.
+
+Tính đồng bộ (synchronization): StringBuilder không đồng bộ (non-synchronized), có nghĩa là nó không an toàn khi sử dụng trong 
+các ứng dụng đa luồng (multi-threaded). Tuy nhiên, điều này cũng giúp StringBuilder nhanh hơn StringBuffer trong các ứng dụng 
+đơn luồng (single-threaded).
+
+ex:
+StringBuilder sb = new StringBuilder("Hello");
+sb.append(" World"); // Thêm " World" vào chuỗi
+System.out.println(sb.toString()); // Kết quả: "Hello World"
+2. StringBuffer
+Tính chất: StringBuffer cũng tương tự như StringBuilder, cho phép thay đổi nội dung chuỗi mà không tạo ra đối tượng mới.
+Tính đồng bộ (synchronization): Khác với StringBuilder, StringBuffer là đồng bộ (synchronized), có nghĩa là nó an toàn khi sử dụng trong các ứng dụng đa luồng. Tuy nhiên, vì đồng bộ nên StringBuffer thường chậm hơn StringBuilder.
+
+ex:
+StringBuffer sbf = new StringBuffer("Hello");
+sbf.append(" World"); // Thêm " World" vào chuỗi
+System.out.println(sbf.toString()); // Kết quả: "Hello World"
+
+
+StringBuilder: Sử dụng khi làm việc trong môi trường đơn luồng và cần hiệu suất cao.
+StringBuffer: Sử dụng khi làm việc trong môi trường đa luồng và cần đảm bảo tính an toàn của dữ liệu.
