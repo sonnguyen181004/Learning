@@ -1,0 +1,45 @@
+. Đơn luồng (Single-threaded)
+Khái niệm: Một chương trình đơn luồng chỉ có một luồng (thread) thực thi duy nhất. Điều này có nghĩa là tất cả các tác vụ trong
+chương trình sẽ được thực hiện tuần tự, từng cái một. Một tác vụ phải hoàn thành trước khi tác vụ tiếp theo có thể bắt đầu.
+
+
+ex:
+public class SingleThreadExample {
+    public static void main(String[] args) {
+        System.out.println("Task 1");
+        System.out.println("Task 2");
+        System.out.println("Task 3");
+    }
+}
+Trong ví dụ này, Task 1 sẽ được thực hiện trước, sau đó là Task 2, rồi Task 3.
+
+2. Đa luồng (Multi-threaded)
+Khái niệm: Trong một chương trình đa luồng, có nhiều luồng thực thi (threads) có thể chạy đồng thời (cùng lúc) trong 
+cùng một quá trình (process). Điều này cho phép chương trình thực hiện nhiều tác vụ song song, giúp tối ưu hóa hiệu suất,
+đặc biệt là trên các hệ thống có nhiều nhân xử lý (multi-core).
+
+
+ex:
+public class MultiThreadExample {
+    public static void main(String[] args) {
+        Thread thread1 = new Thread(() -> System.out.println("Task 1"));
+        Thread thread2 = new Thread(() -> System.out.println("Task 2"));
+        Thread thread3 = new Thread(() -> System.out.println("Task 3"));
+
+        thread1.start();
+        thread2.start();
+        thread3.start();
+    }
+}
+Trong ví dụ này, Task 1, Task 2, và Task 3 có thể được thực hiện đồng thời, không theo thứ tự cố định,
+
+So sánh Đơn luồng và Đa luồng
+Đơn luồng:
+
+Đơn giản, dễ hiểu.
+Dễ dàng quản lý và gỡ lỗi.
+Đa luồng:
+
+Phức tạp hơn, cần quản lý việc đồng bộ hóa giữa các luồng để tránh xung đột dữ liệu.
+Khả năng thực hiện nhiều tác vụ song song, hiệu quả trên các hệ thống đa nhân.
+Có thể khó khăn hơn trong việc gỡ lỗi và kiểm tra, do các tác vụ có thể thực thi đồng thời.
