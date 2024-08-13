@@ -6,7 +6,7 @@
 
 /**
  *
- * @author PC
+ * @author PC//
  */
 public class FindSecondMax {
     public static int findsecondmax(int []arr){
