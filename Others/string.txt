@@ -43,8 +43,6 @@ String str3 = new String("hello");
 System.out.println(str1 == str3); // Trả về false vì str3 là một đối tượng mới, không thuộc String pool.
 Bạn có thể thêm một chuỗi vào String pool bằng cách sử dụng phương thức intern():
 
-java
-Copy code
 String str4 = new String("hello").intern();
 
 System.out.println(str1 == str4); // Trả về true vì str4 được thêm vào String pool và tham chiếu đến cùng chuỗi với str1.
