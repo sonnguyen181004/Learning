@@ -1,0 +1,21 @@
+Single linked list (danh sách liên kết đơn) là  cấu trúc dữ liệu bao gồm một chuỗi các "nút" (nodes), trong đó mỗi nút có hai phần:
+
+Dữ liệu (data)Phần này lưu trữ giá trị của nút.
+Liên kết (link/next)Phần này lưu trữ địa chỉ của nút tiếp theo trong danh sách.
+
+Nó có một nút đầu tiên gọi là head.  bạn từ headcó thể truy cập tất cả các nút tiếp theo trong danh sách.
+Mỗi nút chỉ liên kết đến nút kế tiếp không có nút nào liên kết ngược lại.
+Nút cuối cùng trong danh sách có liên kết trỏ đến null  đây là nút cuối.
+Single linked list thường được sử dụng khi bạn cần một cấu trúc dữ liệu linh hoạt, có thể thay đổi kích thước 
+thêm hoặc xóa các phần tử không cần dịch chuyển nhiều phần tử như trong mảng.
+
+
+
+[Data | Next] -> [Data | Next] -> [Data | Next] -> null
+Trong đó, "Next" là liên kết đến hộp tiếp theo, và "null" cho biết bạn đã đến cuối danh sách.
+
+
+
+
+
+
