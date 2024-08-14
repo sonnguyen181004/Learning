@@ -1,1 +1,30 @@
+Chuoi doi xung
+public boolean isPalindrome(String word) {
+    char[] charArray = word.toCharArray();
+    int start = 0;
+    int end = word.length() - 1;
 
+    while (start < end) {
+        if (charArray[start] != charArray[end]) {
+            return false;
+        }
+        start++;
+        end--;
+    }
+
+    return true;
+}
+
+char[] charArray = word.toCharArray() Chuyển chuỗi word thành một mảng các ký tự (charArray).
+
+int start = 0 Biến start dùng để theo dõi vị trí bắt đầu của chuỗi.
+
+int end = word.length() - 1  end dùng để theo dõi vị trí cuối cùng của chuỗi.
+
+while(start < end): Vòng lặp tiếp tục chạy khistart nhỏ hơn end.
+
+if(charArray[start] != charArray[end]) return false Nếu ký tự ở vị trí start khác với ký tự ở vị trí end, thì chuỗi không phải là palindrome, và phương thức trả về false.
+
+start++; end--;Sau mỗi lần kiểm tra, biến start tăng lên 1 và biến end giảm xuống 1, để tiếp tục kiểm tra các cặp ký tự tiếp theo.
+
+return true;Nếu vòng lặp kết thúc mà không gặp sự khác biệt nào giữa các cặp ký tự, thì chuỗi là palindrome và phương thức trả về true.
