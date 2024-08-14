@@ -1,1 +1,24 @@
 
+     ListNode newNode = new ListNode(value);
+        newNode.next = head;
+        head = newNode;
+
+
+Trạng thái ban đầu 
+Danh sách liên kết có ba nút, với các giá trị là 1 -> 8 -> 11 -> null.
+head hiện đang trỏ đến nút đầu tiên trong danh sách, có giá trị 1.
+Tạo nút mới (newNode)
+
+Một nút mới được tạo với giá trị 1 (newNode = new ListNode(value)).
+Nút này sẽ được thêm vào đầu danh sách, trở thành nút mới đầu tiên.
+Kết nối nút mới vào danh sách
+
+Liên kết của nút mới (newNode.next) được gán bằng nút hiện đang là đầu danh sách (newNode.next = head)
+nút mới sẽ trỏ đến nút hiện có (là nút có giá trị 1 ban đầu).
+Cập nhật con trỏ head
+
+Con trỏ head được cập nhật để trỏ đến nút mới vừa tạo (head = newNode).
+Bây giờ, nút mới trở thành nút đầu tiên của danh sách, và danh sách mới sẽ là 1 -> 1 -> 8 -> 11 -> null.
+Tóm lại
+Nút mới sẽ trở thành nút đầu tiên, và các nút còn lại sẽ dịch chuyển xuống một vị trí, 
+giữ nguyên thứ tự ban đầu của chúng.
