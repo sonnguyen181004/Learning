@@ -1,0 +1,20 @@
+head = new ListNode(10);
+ListNode second = new ListNode(1);
+ListNode third = new ListNode(8);
+ListNode fourth = new ListNode(11);
+
+head.next = second;
+second.next = third;
+third.next = fourth;
+Nodes
+
+ bốn nút trong danh sách liên kết với các giá trị tương ứng là 10, 1, 8, và 11.
+Mỗi nút  cohai phần: một phần chứa dữ liệu (data) và phần kia chứa con trỏ (next) đến nút tiếp theo trong danh sách.
+Con trỏ head
+
+head là con trỏ đầu tiên, trỏ đến nút đầu tiên của danh sách liên kết, có giá trị 10.khi k co cac node thi head tro den null
+Liên kết các nút:
+
+Nút đầu tiên (head) trỏ đến nút thứ hai (có giá trị 1),
+nút thứ hai trỏ đến nút thứ ba (có giá trị 8), và nút thứ ba trỏ đến nút thứ tư (có giá trị 11). 
+Nút cuối cùng trỏ đến null, báo hiệu rằng đó là nút cuối của danh sách.
