@@ -21,6 +21,7 @@ public class SinglyLinkedList {// tạo ra danh sách liên kết đơn.
     this.next=null;//Khi tạo một nút mới, nút này chưa liên kết với nút nào khác, vì vậy next được gán là null.
     }
     }
+    
     //---------------PRINT ELEMENTS IN SINGLY LINKED LIST----------
     public void display(){
      ListNode current=head;
@@ -48,6 +49,49 @@ public class SinglyLinkedList {// tạo ra danh sách liên kết đơn.
     head=newNode;
     
     }
+    //------------Insert Last Node---------
+    public void insertLast(int value){
+        ListNode newNode=new ListNode(value);
+        if(head==null){
+        head=newNode;
+        return;
+        }
+        ListNode current=head;
+        while(null!=current.next){
+        current=current.next;
+    }
+        current.next=newNode;
+    }
+    //-----------Insert At Given Position-------
+    public void insert(int position,int value){
+    ListNode node=new ListNode(value);
+    if(position==1){
+     node.next=head;
+     head=node;
+    }
+    else{
+        ListNode previous=head;
+        int count=1;
+        while(count<position-1){
+         previous=previous.next;
+         count++;
+        }
+        ListNode current=previous.next;
+        previous.next=node;
+        node.next=current;
+    }
+    }
+    //-------------Delete First Node
+    public ListNode deleteFirst(){
+    if(head==null){
+    return null;
+    }
+    ListNode temp=head;
+    head=head.next;
+    temp.next=null;
+    return temp;
+    }
+    
     public static void main(String[] args) {
         SinglyLinkedList sll=new SinglyLinkedList();
         sll.head=new ListNode(10);
@@ -58,9 +102,15 @@ public class SinglyLinkedList {// tạo ra danh sách liên kết đơn.
         sll.head.next=second;//10--->1
         second.next=third;//10-->1--->8
         third.next=fourth;//10--->1--->8---->11---->null;x
-        sll.insertFirst(11);
-        sll.insertFirst(9);
+        sll.insertFirst(14);
+        sll.insertLast(4);
+        sll.insertLast(12);
+        sll.insert(1,100);
         sll.display();
+        System.out.println(sll.deleteFirst());
+        sll.display();
+        
+        
         System.out.println("Length is"+sll.length());
         
     }
