@@ -1,0 +1,47 @@
+    ListNode node = new ListNode(data);
+
+        // Nếu chèn tại vị trí đầu tiên
+        if (position == 1) {
+            node.next = head;
+            head = node;
+        } else {
+            ListNode previous = head;
+            int count = 1;
+
+            // Duyệt đến vị trí (position - 1)
+            while (count < position - 1) {
+                previous = previous.next;
+                count++;
+            }
+
+            // Chèn nút mới vào danh sách
+            ListNode current = previous.next;
+            node.next = current;
+            previous.next = node;
+        }
+    }
+
+
+
+Danh sách liên kết có 3 phần tử với giá trị lần lượt là 8 -> 10 -> 7 -> null.
+head là phần tử đầu tiên của danh sách (có giá trị là 8).
+previous là nút ngay trước vị trí chèn mong muốn (có giá trị là 10).
+Quá trình chèn nút mới:
+
+(position == 1), nút mới này sẽ trỏ đến nút hiện tại đang đứng đầu danh sách (node.next = head)
+, sau đó cập nhật head để nút mới trở thành nút đầu tiên.
+Cập nhật lại đầu danh sách là nút mới (head = node;).
+
+
+Nếu chèn tại vị trí khác (position > 1):
+Duyệt qua các nút để tìm vị trí chèn. Sử dụng biến previous để lưu trữ nút trước vị trí chèn và 
+biến current để lưu trữ nút tại vị trí chèn.
+previous sẽ trỏ đến previous.next, và quá trình này lặp lại cho đến khi đạt đến vị trí chèn mong muốn (position - 1).
+
+
+thực hiện chèn:
+node.next = current; (nút mới sẽ trỏ đến current, là nút trước đó previous.next trỏ đến).
+previous.next = node; (nút trước đó previous sẽ trỏ đến nút mới).
+
+Sau khi chèn xong, nút mới sẽ được thêm vào danh sách liên kết và danh sách sẽ được cập nhật
+Ví
