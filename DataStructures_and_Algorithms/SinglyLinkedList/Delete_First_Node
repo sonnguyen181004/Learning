@@ -1,0 +1,47 @@
+Giải thích đoạn code deleteFirst()
+java
+Copy code
+public ListNode deleteFirst() {
+     Kiểm tra nếu danh sách trống
+    if (head == null) {
+        return null; Nếu danh sách trống, không có gì để xóa, trả về null
+    }
+
+   Tạo một biến tạm thời để lưu trữ nút đầu tiên
+    ListNode temp = head; Biến 'temp' lưu trữ nút đầu tiên trong danh sách
+
+     Bước 3: Di chuyển 'head' đến nút tiếp theo
+    head = head.next; 'head' giờ sẽ trỏ đến nút thứ hai trong danh sách
+
+     Ngắt kết nối nút đầu tiên
+    temp.next = null; Ngắt kết nối nút đầu tiên khỏi danh sách bằng cách đặt 'temp.next' thành null
+
+    // Bước 5: Trả về nút đã bị xóa
+    return temp; // Trả về nút đầu tiên, vốn đã bị xóa khỏi danh sách
+}
+
+Kiểm tra nếu danh sách trống:
+
+Đầu tiên, phương thức kiểm tra xem danh sách liên kết có rỗng hay không (head == null)
+. Nếu rỗng, phương thức sẽ trả về null, nghĩa là không có gì để xóa.
+Lưu trữ nút đầu tiên:
+
+Nếu danh sách không trống,  nút đầu tiêndcluu vào một biến tạm thời (temp = head). 
+Di chuyển head đến nút tiếp theo
+
+head được cập nhật để trỏ đến nút tiếp theo trong danh sách (head = head.next). Bằng cách này, n
+út đầu tiên sẽ bị loại bỏ khỏi danh sách vì head không còn trỏ đến nó nữa.
+Ngắt kết nối nút đầu tiên:
+
+Để hoàn toàn tách nút đầu tiên khỏi danh sách, temp.next = null. Bây giờ nút đầu tiên đã bị ngắt  khỏi phần còn lại của danh sách.
+Trả về nút đã bị xóa:
+
+Cuối cùng, phương thức trả về nút đã bị xóa (return temp). Điều này giúp chúng ta có thể sử dụng hoặc xử lý nút này nếu cần thiết.
+Ví dụ minh họa
+Giả sử danh sách liên kết ban đầu có 3 phần tử: 10 -> 1 -> 11 -> null. Khi gọi deleteFirst():
+
+Trước khi xóa:
+head trỏ đến 10, 10.next trỏ đến 1.
+Sau khi gọi deleteFirst():
+head sẽ trỏ đến 1, và nút 10 sẽ bị loại bỏ khỏi danh sách.
+Kết quả danh sách sẽ là: 1 -> 11 -> null.
