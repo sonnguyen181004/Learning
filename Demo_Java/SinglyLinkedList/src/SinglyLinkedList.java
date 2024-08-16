@@ -150,7 +150,46 @@ public class SinglyLinkedList {// tạo ra danh sách liên kết đơn.
         return previous;
     }
 
-    //---------------
+    //---------------Get Middle Node-----------
+    public ListNode getMiddleNode() {
+        if (head == null) {
+            return null;
+        }
+        ListNode slowPtr = head;
+        ListNode fastPtr = head;
+        while (fastPtr != null && fastPtr.next != null) {
+            slowPtr = slowPtr.next;
+            fastPtr = fastPtr.next.next;
+        }
+        return slowPtr;
+    }
+
+    //---------getNthNode From The end
+    public ListNode getNthNodeFromEnd(int n) {
+        if (head == null) {
+            return null;
+        }
+        if (n <= 0) {
+            throw new IllegalArgumentException("Invalid Value n" + n);
+        }
+        ListNode mainPtr = head;
+        ListNode refPtr = head;
+        int count = 0;
+        while (count < n) {
+            if (refPtr == null) {
+                throw new IllegalArgumentException(n + "is greater than  number of  nodes in list");
+            }
+            refPtr = refPtr.next;
+            count++;
+        }
+        while (refPtr != null) {
+            refPtr = refPtr.next;
+            mainPtr = mainPtr.next;
+        }
+        return mainPtr;
+
+    }
+
     public static void main(String[] args) {
         SinglyLinkedList sll = new SinglyLinkedList();
         sll.head = new ListNode(10);
@@ -168,6 +207,9 @@ public class SinglyLinkedList {// tạo ra danh sách liên kết đơn.
         sll.insert(1, 100);
 
         sll.display();
+        System.out.println("FInd The middle" + " " + sll.getMiddleNode().data);
+        ListNode nthFromEnd=sll.getNthNodeFromEnd(2);
+        System.out.println("2nd Node from End Is"+nthFromEnd.data);
         System.out.println("Delete First");
         System.out.println(sll.deleteFirst().data);
 
@@ -181,7 +223,7 @@ public class SinglyLinkedList {// tạo ra danh sách liên kết đơn.
         System.out.println("REverse");
         sll.head = sll.reverse(sll.head);
         sll.display();
-  /*
+        /*
         Khi sử dụng sll.reverse(head) thay vì sll.reverse(sll.head),  gặp lỗi vì head không được định nghĩa trong phạm vi của phương thức main. 
         Trong lớp SinglyLinkedList, head là một biến thành viên , và để truy cập nó, bạn phải sử dụng sll.head.
 head trong lớp SinglyLinkedList là biến thành viên, được truy cập thông qua đối tượng của lớp đó, trong trường hợp này là sll.
