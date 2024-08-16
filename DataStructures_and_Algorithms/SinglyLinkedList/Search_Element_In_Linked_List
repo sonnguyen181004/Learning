@@ -1,0 +1,24 @@
+
+Danh sách liên kết trong hình bao gồm các node chứa các giá trị 10, 8, 1, 11, và node cuối cùng chỉ đến null,
+nghĩa là kết thúc danh sách.
+Mỗi node trong danh sách liên kết có hai phần: giá trị (data) và con trỏ (pointer) đến node tiếp theo.
+ListNode current = head;: Khởi tạo biến current trỏ đến node đầu tiên trong danh sách.
+while (current != null): Vòng lặp sẽ tiếp tục chạy cho đến khi current trỏ đến null (tức là cuối danh sách).
+if (current.data == searchKey): Kiểm tra xem giá trị của node hiện tại có bằng với searchKey hay không.
+return true;: Nếu tìm thấy, trả về true.
+current = current.next;: Di chuyển current trỏ đến node tiếp theo trong danh sách.
+return false;: Nếu không tìm thấy searchKey sau khi duyệt hết danh sách, trả về false.
+Ví dụ:
+Giả sử bạn đang tìm kiếm giá trị 1 (searchKey = 1):
+10-->8-->1--->
+Bắt đầu từ node đầu tiên (giá trị 10): Không khớp.
+Di chuyển đến node thứ hai (giá trị 8): Không khớp.
+Di chuyển đến node thứ ba (giá trị 1): Khớp, trả về true.
+n tìm kiếm giá trị không có trong danh sách (ví dụ 7)
+code sẽ kiểm tra từng node cho đến khi đến cuối danh sách và trả về false.
+
+
+
+
+
+
