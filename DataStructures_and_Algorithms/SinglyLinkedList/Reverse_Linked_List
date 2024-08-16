@@ -1,0 +1,50 @@
+ListNode current = head;
+ListNode previous = null;
+ListNode next = null;
+while(current != null) {
+    next = current.next;
+    current.next = previous;
+    previous = current;
+    current = next;
+}
+return previous;
+Khởi tạo:
+
+ListNode current = head;: Biến current bắt đầu trỏ đến head, 
+tức là nút đầu tiên của danh sách liên kết.
+ListNode previous = null;: Biến previous khởi tạo là null, để giữ nút trước current trong khi đảo ngược các liên kết.
+ListNode next = null;: Biến next được khởi tạo là null, và sẽ được sử dụng để lưu trữ liên kết tiếp theo của current.
+Vòng lặp while(current != null):
+
+next = current.next;:
+Lưu liên kết tiếp theo của current vào next. Điều này cần thiết để không mất dấu các nút còn lại 
+trong danh sách liên kết khi ta thay đổi liên kết của current.
+ current.next = previous;:
+Thay đổi liên kết của current để trỏ ngược về previous (nút trước đó). 
+bước quan trọng nhất trong việc đảo ngược danh sách.
+Bước 3: previous = current;:
+Di chuyển previous lên để nó trỏ đến current, chuẩn bị cho bước tiếp theo.
+Bước 4: current = next;:
+Di chuyển current lên để nó trỏ đến nút tiếp theo (next) trong danh sách liên kết ban đầu.
+Vòng lặp tiếp tục cho đến khi current trở thành null, tức là đã duyệt qua toàn bộ danh sách.
+
+
+Khi vòng lặp kết thúc (current == null), tất cả các liên kết đã bị đảo ngược.
+previous bây giờ trỏ đến nút mới đầu tiên của danh sách liên kết, vì vậy hàm trả về previous.
+Ví dụ:
+danh sách liên kết ban đầu là: 10 -> 8 -> 1 -> 11 -> null. Sau khi chạy thuật toán:
+
+Ở lần lặp đầu tiên:
+
+current = 10, previous = null, next = 8.
+Sau bước 2, 10 trỏ đến null.
+previous trở thành 10, current trở thành 8.
+Ở lần lặp thứ hai:
+
+current = 8, previous = 10, next = 1.
+Sau bước 2, 8 trỏ đến 10.
+previous trở thành 8, current trở thành 1.
+Tiếp tục cho đến khi current = null, bạn sẽ có danh sách liên kết mới là 11 -> 1 -> 8 -> 10 -> null.
+
+
+
