@@ -187,7 +187,20 @@ public class SinglyLinkedList {// tạo ra danh sách liên kết đơn.
             mainPtr = mainPtr.next;
         }
         return mainPtr;
-
+    }
+    //--------------Find Elemetns
+    public boolean findElement(ListNode head,int searchKey){
+    if(head==null){
+    return false;
+    }
+    ListNode current=head;
+    while(current.next!=null){
+    if(current.data==searchKey){
+    return true;
+    }
+    current=current.next;
+    }
+    return false;
     }
 
     public static void main(String[] args) {
@@ -210,6 +223,12 @@ public class SinglyLinkedList {// tạo ra danh sách liên kết đơn.
         System.out.println("FInd The middle" + " " + sll.getMiddleNode().data);
         ListNode nthFromEnd=sll.getNthNodeFromEnd(2);
         System.out.println("2nd Node from End Is"+nthFromEnd.data);
+        if(sll.findElement(sll.head, 1)){
+            System.out.println("Search Key Found");
+        }
+        else{
+            System.out.println("Search Key not FOund");
+        }
         System.out.println("Delete First");
         System.out.println(sll.deleteFirst().data);
 
