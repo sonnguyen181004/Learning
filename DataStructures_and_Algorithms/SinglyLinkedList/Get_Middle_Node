@@ -1,0 +1,41 @@
+ListNode slowPtr = head;
+ListNode fastPtr = head;
+while(fastPtr != null && fastPtr.next != null){
+    slowPtr = slowPtr.next;
+    fastPtr = fastPtr.next.next;
+}
+return slowPtr;
+
+
+ListNode slowPtr = head;: Con trỏ slowPtr bắt đầu từ nút đầu tiên (head) của danh sách liên kết.
+ListNode fastPtr = head;: Con trỏ fastPtr cũng bắt đầu từ head.
+
+
+ while(fastPtr != null && fastPtr.next != null). Vòng lặp này tiếp tục chạy chừng nào fastPtr chưa đến cuối danh sách.
+Trong mỗi lần lặp, slowPtr di chuyển một nút (slowPtr = slowPtr.next;) 
+trong khi fastPtr di chuyển hai nút (fastPtr = fastPtr.next.next;).
+
+
+slowPtr = slowPtr.next;: Di chuyển slowPtr một bước về phía trước.
+fastPtr = fastPtr.next.next;: Di chuyển fastPtr hai bước về phía trước.
+Vì fastPtr di chuyển nhanh gấp đôi slowPtr
+khi fastPtr đến cuối danh sách, slowPtr sẽ đứng ở vị trí giữa của danh sách.
+
+
+Vòng lặp dừng lại khi fastPtr đã đi qua hết danh sách (fastPtr == null) hoặc khi fastPtr.next == null
+
+Tại thời điểm này, slowPtr đang ở vị trí giữa của danh sách.
+Trả về kết quả:
+
+return slowPtr;: Trả về con trỏ slowPtr, con trỏ này trỏ đến nút giữa của danh sách.
+-----------EXAMPLE---------
+Danh sách liên kết ban đầu là: 10 -> 8 -> 1 -> 11 -> 15 -> null.
+Tìm phần tử giữa:
+
+Bước 1: slowPtr và fastPtr đều ở 10.
+Bước 2: slowPtr di chuyển tới 8, fastPtr di chuyển tới 1.
+Bước 3: slowPtr di chuyển tới 1, fastPtr di chuyển tới 15.
+Bước 4: slowPtr di chuyển tới 11, nhưng fastPtr không còn nút để di chuyển, dừng vòng lặp.
+Kết quả:
+
+slowPtr dừng lại ở phần tử 1, đây chính là phần tử giữa của danh sách liên kết.
