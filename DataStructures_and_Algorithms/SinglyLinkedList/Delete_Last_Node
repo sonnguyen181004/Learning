@@ -1,0 +1,69 @@
+Kiểm tra danh sách rỗng hoặc có một phần tử
+if(head == null || head.next == null){
+    return head;
+}
+Nếu danh sách trống (head == null), hoặc chỉ có một phần tử (head.next == null),
+phương thức sẽ trả về head(null) mà không thực hiện xóa.
+Duyệt dsachh để tìm phần tử cuối cùng và phần tử trước nó:
+
+ListNode current = head;
+ListNode previous = null;
+while(current.next != null){
+    previous = current;
+    current = current.next;
+}
+current bắt đầu từ head, và previous được khởi tạo là null.
+Vòng lặp while sẽ tiếp tục chạy cho đến khi current.next == null, khi
+current đang ở phần tử cuối cùng. Trong quá trình lặp
+previous được cập nhật thành current, còn current được cập nhật thành nút tiếp theo (current.next).
+
+current: Ở cuối vòng lặp while, current trỏ đến phần tử cuối cùng trong danh sách (phần tử mà current.next == null).
+Sau khi vòng lặp kết thúc, phần tử này đã bị ngắt liên kết với danh sách, 
+nghĩa là nó không còn nằm trong danh sách liên kết nữa.
+
+return current;: Câu lệnh này trả về nút cuối cùng (current). 
+Điều này có nghĩa là phương thức deleteLast() sẽ trả về phần tử cuối cùng đã bị xóa.
+Việc trả về nút này có thể hữu ích trong một số trường hợp
+
+Bạn muốn kiểm tra hoặc ghi lại phần tử nào vừa bị xóa.
+Bạn muốn sử dụng giá trị của phần tử vừa bị xóa trong một số logic khác.
+
+
+
+------------------------------------EXAMPLE--------------------------
+inkedList myLinkedList = new LinkedList();
+    
+        Thêm các phần tử vào danh sách liên kết
+        myLinkedList.addLast(10);
+        myLinkedList.addLast(20);
+        myLinkedList.addLast(30);
+        myLinkedList.addLast(40);
+
+        Hiển thị danh sách 
+        System.out.println("Danh sách ban đầu:");
+        myLinkedList.display();
+
+        Xóa phần tử cuối cùng
+        ListNode deletedNode = myLinkedList.deleteLast();
+
+        Hiển thị phần tử đã xóa
+        if (deletedNode != null) {
+            System.out.println("Phần tử đã bị xóa: " + deletedNode.value);
+        }
+
+        Hiển thị danh sách sau khi xóa
+        System.out.println("Danh sách sau khi xóa phần tử cuối:");
+        myLinkedList.display();
+    }
+}
+Giải thích:
+
+
+Danh sách ban đầu:
+10 -> 20 -> 30 -> 40 -> null
+Phần tử đã bị xóa: 40
+Danh sách sau khi xóa phần tử cuối:
+10 -> 20 -> 30 -> nul
+Trước khi xóa:  10 -> 20 -> 30 -> 40
+Sau khi xóa: 40 bị xóa, và danh sách còn lại 10 -> 20 -> 30
+Phần tử bị xóa: 40, và được in ra nhờ System.out.println("Phần tử đã bị xóa: " + deletedNode.value);
