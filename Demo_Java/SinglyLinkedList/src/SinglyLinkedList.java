@@ -91,7 +91,43 @@ public class SinglyLinkedList {// tạo ra danh sách liên kết đơn.
     temp.next=null;
     return temp;
     }
+    //------------------Delete Node At Given Position---
+    public void delete(int position){
+    if(position==1){
+    head=head.next;
+    }
+    else{
+       ListNode previous=head;
+       int count=1;
+       while(count<position-1){
+       previous=previous.next;
+       count++;
+       
+       }
+       ListNode current=previous.next;
+       previous.next=current.next;
+       
+    }
+    }
     
+    
+    
+    
+    //----------Delete Last Node----------
+    public ListNode deleteLast(){
+    if(head==null&&head.next==null){
+    return head;
+    }
+    ListNode current=head;
+    ListNode previous=null;
+    while(current.next!=null){
+     previous=current;
+     current=current.next;
+    }
+    previous.next=null;//break the chain
+    return current;
+    }
+    //-------------------------
     public static void main(String[] args) {
         SinglyLinkedList sll=new SinglyLinkedList();
         sll.head=new ListNode(10);
@@ -107,9 +143,16 @@ public class SinglyLinkedList {// tạo ra danh sách liên kết đơn.
         sll.insertLast(12);
         sll.insert(1,100);
         sll.display();
-        System.out.println(sll.deleteFirst());
-        sll.display();
+        System.out.println("Delete First");
+        System.out.println(sll.deleteFirst().data);
         
+        sll.display();
+        System.out.println("Delete Last");
+        System.out.println(sll.deleteLast().data);
+        sll.display();
+        System.out.println("Delete Position");
+        sll.delete(3);
+        sll.display();
         
         System.out.println("Length is"+sll.length());
         
