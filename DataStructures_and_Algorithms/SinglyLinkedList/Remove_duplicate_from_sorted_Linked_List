@@ -1,0 +1,29 @@
+
+ListNode current = head;
+while (current != null && current.next != null) {
+    if (current.data == current.next.data) {
+        current.next = current.next.next;
+    } else {
+        current = current.next;
+    }
+ải thích:
+ListNode current = head;: Khởi tạo con trỏ current để bắt đầu từ node đầu tiên của danh sách liên kết.
+while (current != null && current.next != null): 
+Vòng lặp tiếp tục cho đến khi current hoặc node tiếp theo của nó là null (tức là cuối danh sách).
+if (current.data == current.next.data): Kiểm tra xem giá trị của node hiện tại có trùng với 
+giá trị của node tiếp theo hay không.
+current.next = current.next.next;: Nếu trùng, bỏ qua node tiếp theo bằng cách trỏ next của node hiện tại 
+đến node sau node tiếp theo.
+else { current = current.next; }: Nếu không trùng lặp, di chuyển con trỏ current 
+đến node tiếp theo để tiếp tục kiểm tra.
+
+nh sách liên kết ban đầu là 1 -> 1 -> 2 -> 3 -> 3 -> null:
+
+Bước 1: current trỏ đến node đầu tiên (giá trị 1). So sánh với node tiếp theo (cũng có giá trị 1). 
+Bỏ qua node này, danh sách trở thành 1 -> 2 -> 3 -> 3 -> null.
+Bước 2: current trỏ đến node có giá trị 1 (sau khi đã bỏ qua node trùng lặp). 
+So sánh với node tiếp theo (giá trị 2). Không có trùng lặp, di chuyển current đến node tiếp theo.
+Bước 3: current trỏ đến node có giá trị 2. So sánh với node tiếp theo (giá trị 3). Không có trùng lặp, 
+di chuyển current đến node tiếp theo.
+Bước 4: current trỏ đến node có giá trị 3. So sánh với node tiếp theo (cũng có giá trị 3). 
+Bỏ qua node này, danh sách trở thành 1 -> 2 -> 3 -> null.
