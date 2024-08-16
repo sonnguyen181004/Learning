@@ -1,0 +1,48 @@
+ListNode mainPtr = head;
+        ListNode refPtr = head;
+        int count = 0;
+
+        while (count < n) {
+            if (refPtr == null) {
+                return null;  // n is greater than the number of nodes in the list
+            }
+            refPtr = refPtr.next;
+            count++;
+        }
+thuật toán sử dụng kỹ thuật "two-pointer" (kỹ thuật hai con trỏ)
+để tìm phần tử thứ n từ cuối danh sách liên kết đơn. 
+
+
+mainPtr và refPtr: Hai con trỏ đều được khởi tạo tại đầu danh sách liên kết (head).
+count: Biến đếm số bước mà con trỏ refPtr đã di chuyển.
+B 1 - Di chuyển con trỏ refPtr n bước:
+
+thuật toán sẽ di chuyển con trỏ refPtr n bước trong danh sách liên kết
+saukhi di chuyen refPtr sẽ trỏ đến nút thứ 3 (nút có giá trị 1) trong danh sách.
+B2 - Di chuyển cả mainPtr và refPtr đồng thời cho đến khi refPtr gặp null:
+
+Sau khi refPtr đã di chuyển n bước, cả mainPtr và refPtr cùng di chuyển đồng thời từng bước một.
+Khi refPtr di chuyển đến cuối danh sách (null) mainPtr sẽ trỏ tới phần tử thứ n từ cuối trong danh sách.
+
+
+ trả về giá trị mà con trỏ mainPtr đang trỏ tới, đây là phần tử thứ n từ cuối danh sách.
+--------Example
+ danh sách liên kết 
+head -> 10 -> 8 -> 1 -> 11 -> 15 -> null
+
+
+mainPtr = head và refPtr = head (cả hai cùng trỏ vào phần tử 10).
+count = 0
+Di chuyển refPtr n bước:
+
+refPtr di chuyển 2 bước:
+B 1: refPtr trỏ vào 8, count = 1
+B 2: refPtr trỏ vào 1, count = 2
+Di chuyển cả mainPtr và refPtr:
+
+Sau đó, cả hai con trỏ cùng di chuyển cho đến khi refPtr gặp null:
+Bước 1: refPtr trỏ vào 11, mainPtr trỏ vào 8
+Bước 2: refPtr trỏ vào 15, mainPtr trỏ vào 1
+Bước 3: refPtr trỏ vào null, mainPtr trỏ vào 11
+
+Khi refPtr gặp null, mainPtr đang trỏ vào 11, đây chính là phần tử thứ 2 từ cuối danh sách.
