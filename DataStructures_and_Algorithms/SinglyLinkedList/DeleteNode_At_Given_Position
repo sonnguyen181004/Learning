@@ -1,0 +1,30 @@
+if(position == 1) {
+    head = head.next;
+} else {
+    ListNode previous = head;
+    int count = 1;
+    while(count < position - 1) {
+        previous = previous.next;
+        count++;
+    }
+    ListNode current = previous.next;
+    previous.next = current.next;
+}
+Nếu vị trí cần xóa là 1, là xóa nút đầu tiên.
+head = head.next; sẽ làm cho head trỏ đến nút thứ hai trong danh sách, là loại bỏ nút đầu tiên ra khỏi danh sách.
+Xóa nút tại vị trí bất kỳ khác
+
+ListNode previous = head; khởi tạo một con trỏ previous trỏ đến đầu danh sách.
+int count = 1; bắt đầu đếm từ 1.
+Vòng lặp while(count < position - 1) sẽ di chuyển previous đến vị trí ngay trước
+vị trí cần xóa (vị trí position - 1).
+Sau vòng lặp, previous sẽ trỏ đến nút ngay trước nút cần xóa.
+ListNode current = previous.next; khởi tạo con trỏ current trỏ đến nút cần xóa.
+previous.next = current.next; sẽ bỏ qua nút current, liên kết previous với nút sau current(curent.next)
+
+danh sách liên kết 8 -> 10 -> 7 -> 1 -> null muốn xóa nút tại vị trí thứ 3 (giá trị 7):
+
+Đầu tiên, previous sẽ trỏ đến nút có giá trị 10.
+Sau khi thực hiện previous.next = current.next;, nút 10 sẽ trỏ đến nút có giá trị 1(tro den current.next dang chi toi gia tri 1)
+, và nút 7 sẽ bị loại bỏ.
+Kết quả cuối cùng là 8 -> 10 -> 1 -> null.
