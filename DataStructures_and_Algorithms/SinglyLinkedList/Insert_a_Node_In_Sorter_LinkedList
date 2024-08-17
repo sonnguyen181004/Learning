@@ -1,0 +1,40 @@
+ListNode current = head;
+ListNode temp = null;
+while (current != null && current.data < newNode.data) {
+    temp = current;
+    current = current.next;
+}
+newNode.next = current;
+temp.next = newNode;
+return head;
+
+
+
+Danh sách liên kết có các node với giá trị 1 -> 8 -> 10 -> 16 -> null.
+Ta muốn chèn một node mới có giá trị 11 vào đúng vị trí để danh sách vẫn duy trì thứ tự tăng dần.
+
+
+ListNode current = head;: Khởi tạo con trỏ current trỏ đến node đầu tiên (có giá trị 1).
+ListNode temp = null;: Biến temp để lưu lại node trước node mà chúng ta sẽ chèn node mới vào.
+
+
+while (current != null && current.data < newNode.data): Vòng lặp này di chuyển current 
+qua danh sách liên kết cho đến khi tìm được vị trí mà node mới cần được chèn vào.
+Nó sẽ dừng lại khi giá trị của current lớn hơn hoặc bằng giá trị của newNode.
+
+temp = current;: Lưu lại vị trí hiện tại của current vào temp.
+current = current.next;: Di chuyển current đến node tiếp theo trong danh sách.
+Chèn node mới:
+
+newNode.next = current;: Chèn newNode vào trước current. newNode sẽ trỏ đến node current.
+temp.next = newNode;: Cập nhật temp.next để trỏ đến newNode, hoàn thành việc chèn.
+Trả về head của danh sách:
+
+return head;: Trả về đầu của danh sách liên kết sau khi đã chèn xong node mới.
+Ví dụ:
+Danh sách ban đầu: 1 -> 8 -> 10 -> 16 -> null.
+newNode.data = 11: Ta cần chèn node với giá trị 11.
+current sẽ di chuyển qua các node 1, 8, và 10, sau đó dừng lại vì 16 lớn hơn 11.
+temp sẽ lưu lại vị trí của node có giá trị 10.
+Chèn newNode vào sau 10 và trước 16.
+Danh sách cuối cùng sau khi chèn sẽ là: 1 -> 8 -> 10 -> 11 -> 16 -> null.
