@@ -212,24 +212,45 @@ public class SinglyLinkedList {// tạo ra danh sách liên kết đơn.
         ListNode current = head;
         while (current != null && current.next != null) {
             if (current.data == current.next.data) {
-                current.next= current.next.next;
+                current.next = current.next.next;
             } else {
                 current = current.next;
             }
         }
+    }
 
+    //Insert In Sorted List
+    public ListNode insertInSortedList(int value) {
+        ListNode newNode = new ListNode(value);
+        if (head == null) {
+            return newNode;
+        }
+        ListNode current = head;
+        ListNode temp = null;
+        while (current != null && current.data < newNode.data) {
+            temp = current;
+            current = current.next;
+        }
+        newNode.next = current;
+        temp.next = newNode;
+        return head;
     }
 
     public static void main(String[] args) {
         SinglyLinkedList sll = new SinglyLinkedList();
-        sll.head = new ListNode(10);
-        ListNode second = new ListNode(1);
-        ListNode third = new ListNode(8);
-        ListNode fourth = new ListNode(11);
+        sll.head = new ListNode(1);
+        ListNode second = new ListNode(8);
+        ListNode third = new ListNode(10);
+        ListNode fourth = new ListNode(16);
         // now we connect them together
         sll.head.next = second;//10--->1
         second.next = third;//10-->1--->8
         third.next = fourth;//10--->1--->8---->11---->null;x
+        sll.display();
+        System.out.println("Inser Node In Sorted List");
+        sll.insertInSortedList(11);
+        sll.display();
+        System.out.println("New List By Insert First And Last");
         sll.insertFirst(14);
         sll.insertFirst(14);
         sll.insertLast(4);
@@ -244,6 +265,7 @@ public class SinglyLinkedList {// tạo ra danh sách liên kết đơn.
         System.out.println("FInd The middle" + " " + sll.getMiddleNode().data);
         ListNode nthFromEnd = sll.getNthNodeFromEnd(2);
         System.out.println("2nd Node from End Is" + nthFromEnd.data);
+        System.out.println("Search Key 1:");
         if (sll.findElement(sll.head, 1)) {
             System.out.println("Search Key Found");
         } else {
@@ -256,7 +278,7 @@ public class SinglyLinkedList {// tạo ra danh sách liên kết đơn.
         System.out.println("Delete Last");
         System.out.println(sll.deleteLast().data);
         sll.display();
-        System.out.println("Delete Position");
+        System.out.println("Delete Position 3:");
         sll.delete(3);
         sll.display();
         System.out.println("REverse");
