@@ -188,19 +188,36 @@ public class SinglyLinkedList {// tạo ra danh sách liên kết đơn.
         }
         return mainPtr;
     }
+
     //--------------Find Elemetns
-    public boolean findElement(ListNode head,int searchKey){
-    if(head==null){
-    return false;
+    public boolean findElement(ListNode head, int searchKey) {
+        if (head == null) {
+            return false;
+        }
+        ListNode current = head;
+        while (current.next != null) {
+            if (current.data == searchKey) {
+                return true;
+            }
+            current = current.next;
+        }
+        return false;
+        //-------------REMOVE DUPLICATED FROM SORTED LINKED LIST----------
     }
-    ListNode current=head;
-    while(current.next!=null){
-    if(current.data==searchKey){
-    return true;
-    }
-    current=current.next;
-    }
-    return false;
+
+    public void removeDuplicated() {
+        if (head == null) {
+            return;
+        }
+        ListNode current = head;
+        while (current != null && current.next != null) {
+            if (current.data == current.next.data) {
+                current.next= current.next.next;
+            } else {
+                current = current.next;
+            }
+        }
+
     }
 
     public static void main(String[] args) {
@@ -213,20 +230,23 @@ public class SinglyLinkedList {// tạo ra danh sách liên kết đơn.
         sll.head.next = second;//10--->1
         second.next = third;//10-->1--->8
         third.next = fourth;//10--->1--->8---->11---->null;x
-
+        sll.insertFirst(14);
         sll.insertFirst(14);
         sll.insertLast(4);
+        sll.insertLast(4);
+        sll.insertLast(12);
         sll.insertLast(12);
         sll.insert(1, 100);
-
+        sll.display();
+        System.out.println("REMOVE DUPLICATED");
+        sll.removeDuplicated();
         sll.display();
         System.out.println("FInd The middle" + " " + sll.getMiddleNode().data);
-        ListNode nthFromEnd=sll.getNthNodeFromEnd(2);
-        System.out.println("2nd Node from End Is"+nthFromEnd.data);
-        if(sll.findElement(sll.head, 1)){
+        ListNode nthFromEnd = sll.getNthNodeFromEnd(2);
+        System.out.println("2nd Node from End Is" + nthFromEnd.data);
+        if (sll.findElement(sll.head, 1)) {
             System.out.println("Search Key Found");
-        }
-        else{
+        } else {
             System.out.println("Search Key not FOund");
         }
         System.out.println("Delete First");
