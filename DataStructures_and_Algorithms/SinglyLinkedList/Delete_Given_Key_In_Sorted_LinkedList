@@ -1,0 +1,28 @@
+
+ListNode current = head;
+ListNode temp = null;
+while(current != null && current.data != key) {
+    temp = current;
+    current = current.next;
+}
+if(current == null) return;
+temp.next = current.next;
+Khởi tạo:
+
+ListNode current = head; khởi tạo current trỏ đến đầu danh sách.
+ListNode temp = null; khởi tạo temp với giá trị null. temp sẽ trỏ đến nút trước nút cần xóa.
+
+
+while(current != null && current.data != key):
+Vòng lặp tiếp tục khi current không phải là null và current.data (dữ liệu trong nút hiện tại) không bằng key.
+ temp = current; đặt temp bằng với current, tức là temp sẽ lưu trữ nút hiện tại trước khi current chuyển sang nút tiếp theo.
+Ví dụ:
+Key = 11 nếu key là 11, khi vòng lặp kết thúc, current sẽ trỏ đến nút có giá trị 11, và temp sẽ trỏ đến nút có giá trị 10.
+Sau khi thoát khỏi vòng lặp, nếu current không phải là null, lệnh temp.next = current.next; sẽ bỏ qua nút 11 bằng cách trỏ temp.next đến nút tiếp theo của current, tức là nút có giá trị 16.
+Kết quả là nút có giá trị 11 sẽ bị xóa khỏi danh sách liên kết.
+
+
+
+
+
+
