@@ -56,7 +56,7 @@ public class SinglyLinkedList {// tạo ra danh sách liên kết đơn.
 
     }
 
-    //------------Insert Last Node---------
+    //------------Insert Last Node--------------
     public void insertLast(int value) {
         ListNode newNode = new ListNode(value);
         if (head == null) {
@@ -70,7 +70,7 @@ public class SinglyLinkedList {// tạo ra danh sách liên kết đơn.
         current.next = newNode;
     }
 
-    //-----------Insert At Given Position-------
+    //-----------Insert At Given Position---------
     public void insert(int position, int value) {
         ListNode node = new ListNode(value);
         if (position == 1) {
@@ -89,7 +89,7 @@ public class SinglyLinkedList {// tạo ra danh sách liên kết đơn.
         }
     }
 
-    //-------------Delete First Node
+    //-------------Delete First Node-------------------
     public ListNode deleteFirst() {
         if (head == null) {
             return null;
@@ -100,7 +100,7 @@ public class SinglyLinkedList {// tạo ra danh sách liên kết đơn.
         return temp;
     }
 
-    //------------------Delete Node At Given Position---
+    //------------------Delete Node At Given Position---------
     public void delete(int position) {
         if (position == 1) {
             head = head.next;
@@ -118,7 +118,7 @@ public class SinglyLinkedList {// tạo ra danh sách liên kết đơn.
         }
     }
 
-    //----------Delete Last Node----------
+    //----------Delete Last Node------------
     public ListNode deleteLast() {
         if (head == null && head.next == null) {
             return head;
@@ -150,7 +150,7 @@ public class SinglyLinkedList {// tạo ra danh sách liên kết đơn.
         return previous;
     }
 
-    //---------------Get Middle Node-----------
+    //---------------Get Middle Node-------------
     public ListNode getMiddleNode() {
         if (head == null) {
             return null;
@@ -164,7 +164,7 @@ public class SinglyLinkedList {// tạo ra danh sách liên kết đơn.
         return slowPtr;
     }
 
-    //---------getNthNode From The end
+    //---------getNthNode From The end------------------
     public ListNode getNthNodeFromEnd(int n) {
         if (head == null) {
             return null;
@@ -189,7 +189,7 @@ public class SinglyLinkedList {// tạo ra danh sách liên kết đơn.
         return mainPtr;
     }
 
-    //--------------Find Elemetns
+    //--------------Find Elemetns---------------
     public boolean findElement(ListNode head, int searchKey) {
         if (head == null) {
             return false;
@@ -219,7 +219,7 @@ public class SinglyLinkedList {// tạo ra danh sách liên kết đơn.
         }
     }
 
-    //Insert In Sorted List
+    //------------Insert In Sorted List----------------
     public ListNode insertInSortedList(int value) {
         ListNode newNode = new ListNode(value);
         if (head == null) {
@@ -234,6 +234,25 @@ public class SinglyLinkedList {// tạo ra danh sách liên kết đơn.
         newNode.next = current;
         temp.next = newNode;
         return head;
+        
+    }
+    //------------Remove A Given Key  from Sorted Linked List
+    public void deleteNode(int key){
+    ListNode current=head;
+    ListNode tmp=null;
+    if(current!=null && current.data==key){
+    head=current.next;
+    return;
+    }
+    while(current!=null&& current.data!=key){
+    tmp=current;
+    current=current.next;
+    }
+    if(current==null){
+    return;
+    }
+    tmp.next=current.next;
+    
     }
 
     public static void main(String[] args) {
@@ -245,10 +264,13 @@ public class SinglyLinkedList {// tạo ra danh sách liên kết đơn.
         // now we connect them together
         sll.head.next = second;//10--->1
         second.next = third;//10-->1--->8
-        third.next = fourth;//10--->1--->8---->11---->null;x
+        third.next = fourth;//10--->1--->8---->11---->nul
         sll.display();
         System.out.println("Inser Node In Sorted List");
         sll.insertInSortedList(11);
+        sll.display();
+        sll.deleteNode(8);
+        System.out.println("Remove Key 8");
         sll.display();
         System.out.println("New List By Insert First And Last");
         sll.insertFirst(14);
