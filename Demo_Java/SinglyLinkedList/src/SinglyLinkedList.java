@@ -311,6 +311,29 @@ public class SinglyLinkedList {// tạo ra danh sách liên kết đơn.
         sixth.next = third;
 
     }
+    //-----remove Loop
+
+    public void removeLoop() {
+        ListNode fastPtr = head;
+        ListNode slowPtr = head;
+        while (fastPtr != null && fastPtr.next != null) {
+            fastPtr = fastPtr.next.next;
+            slowPtr = slowPtr.next;
+        }
+        if (fastPtr == slowPtr) {
+            removeLoop(slowPtr);
+            return;
+        }
+    }
+
+    private void removeLoop(ListNode slowPtr) {
+        ListNode tmp = head;
+        while (tmp.next != slowPtr.next) {
+            tmp = tmp.next;
+            slowPtr = slowPtr.next;
+        }
+        slowPtr.next = null;
+    }
 
     public static void main(String[] args) {
         SinglyLinkedList sll = new SinglyLinkedList();
@@ -375,7 +398,10 @@ Nếu  chỉ gọi sll.reverse(head), Java sẽ không biết head là gì vì h
         sll.createALoopInLinkedList();
 
         System.out.println(sll.containsLoop());
-        System.out.println("The Start Of The Loop Is" +" "+ sll.startNodeInALoop().data);
+        System.out.println("The Start Of The Loop Is" + " " + sll.startNodeInALoop().data);
+        System.out.println("RemoveLoop ");
+        sll.removeLoop();
+        sll.display();
 
         System.out.println("Length is" + sll.length());
 
