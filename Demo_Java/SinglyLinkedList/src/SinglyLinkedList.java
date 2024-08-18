@@ -234,25 +234,57 @@ public class SinglyLinkedList {// tạo ra danh sách liên kết đơn.
         newNode.next = current;
         temp.next = newNode;
         return head;
-        
+
     }
+
     //------------Remove A Given Key  from Sorted Linked List
-    public void deleteNode(int key){
-    ListNode current=head;
-    ListNode tmp=null;
-    if(current!=null && current.data==key){
-    head=current.next;
-    return;
+    public void deleteNode(int key) {
+        ListNode current = head;
+        ListNode tmp = null;
+        if (current != null && current.data == key) {
+            head = current.next;
+            return;
+        }
+        while (current != null && current.data != key) {
+            tmp = current;
+            current = current.next;
+        }
+        if (current == null) {
+            return;
+        }
+        tmp.next = current.next;
+
     }
-    while(current!=null&& current.data!=key){
-    tmp=current;
-    current=current.next;
+    // Detect A Loop
+
+    public boolean containsLoop() {
+        ListNode fastPtr = head;
+        ListNode slowPtr = head;
+        while (fastPtr != null && fastPtr.next != null) {
+            fastPtr = fastPtr.next.next;
+            slowPtr = slowPtr.next;
+            if (slowPtr == fastPtr) {
+                return true;
+            }
+        }
+        return false;
     }
-    if(current==null){
-    return;
-    }
-    tmp.next=current.next;
-    
+
+    // CREATE A LOOP IN LINEKED LIST
+    public void createALoopInLinkedList() {
+        ListNode first = new ListNode(1);
+        ListNode second = new ListNode(2);
+        ListNode third = new ListNode(3);
+        ListNode fourth = new ListNode(4);
+        ListNode fifth = new ListNode(5);
+        ListNode sixth = new ListNode(6);
+        first.next = second;
+        second.next = third;
+        third.next = fourth;
+        fourth.next = fifth;
+        fifth.next = sixth;
+        sixth.next = third;
+
     }
 
     public static void main(String[] args) {
@@ -272,6 +304,7 @@ public class SinglyLinkedList {// tạo ra danh sách liên kết đơn.
         sll.deleteNode(8);
         System.out.println("Remove Key 8");
         sll.display();
+
         System.out.println("New List By Insert First And Last");
         sll.insertFirst(14);
         sll.insertFirst(14);
@@ -313,6 +346,11 @@ head trong lớp SinglyLinkedList là biến thành viên, được truy cập t
 Nếu  chỉ gọi sll.reverse(head), Java sẽ không biết head là gì vì head không phải là một biến cục bộ (local variable) trong phương thức main.
 
          */
+
+        System.out.println("LinKedList with Loop");
+
+        sll.display();
+        System.out.println(sll.containsLoop());
 
         System.out.println("Length is" + sll.length());
 
