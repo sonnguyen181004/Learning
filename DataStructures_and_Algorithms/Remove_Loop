@@ -1,0 +1,23 @@
+
+
+
+
+public void removeLoop(ListNode slowPtr) {
+    ListNode temp = head;
+    while(slowPtr.next != temp.next) {
+        temp = temp.next;
+        slowPtr = slowPtr.next;
+    }
+    slowPtr.next = null;
+}
+
+Hàm removeLoop(ListNode slowPtr) nhận vào tham số là slowPtr, 
+con trỏ trỏ đến vị trí bắt đầu vong lap 
+
+Đặt một con trỏ temp trỏ đến head.
+Duyệt danh sách bằng cách di chuyển cả slowPtr và temp, sao cho khi nào slowPtr.next\\
+và temp.next trỏ đến cùng một nút, thì dừng lại.
+Sau đó, cập nhật slowPtr.next = null để xóa vong lap
+Ví dụ 
+danh sách liên kết có chu trình: 1 -> 2 -> 3 -> 4 -> 5 -> 6 -> 5... (chu trình từ nút 6 về lại nút 5).
+Sau khi hàm removeLoop được gọi, vog lap bị xóa và danh sách trở thành: 1 -> 2 -> 3 -> 4 -> 5 -> 6 -> null.
