@@ -1,0 +1,21 @@
+public ListNode getStartingNode(ListNode slowPtr) {
+    ListNode temp = head;
+    while (slowPtr != temp) {
+        temp = temp.next;
+        slowPtr = slowPtr.next;
+    }
+    return temp;
+}
+Đoạn mã nhận đầu vào là slowPtr, là một con trỏ chậm, 
+
+temp được khởi tạo là con trỏ bắt đầu từ head.
+while (slowPtr != temp) lặp lại cho đến khi con trỏ temp và slowPtr gặp nhau.
+Điều này xảy ra tại node bắt đầu của vòng lặp.
+Sau khi vòng lặp kết thúc, temp chính là node bắt đầu của vòng lặp và được trả về.
+
+Giả sử danh sách liên kết có vòng lặp như trong hình:
+
+Danh sách liên kết: 1 → 2 → 3 → 4 → 5 → 6 → 3 (vòng lặp bắt đầu từ node 3).
+Sử dụng thuật toán này, sau khi phát hiện có vòng lặp, slowPtr sẽ ở một vị trí nào đó trong vòng lặp 
+ là node 3). Sau đó, hàm getStartingNode sẽ di chuyển cả slowPtr và
+temp từng bước cho đến khi hai con trỏ gặp nhau tại node 3, đó là điểm bắt đầu của vòng lặp.
