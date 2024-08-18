@@ -263,21 +263,46 @@ public class SinglyLinkedList {// tạo ra danh sách liên kết đơn.
         while (fastPtr != null && fastPtr.next != null) {
             fastPtr = fastPtr.next.next;
             slowPtr = slowPtr.next;
-            if (slowPtr == fastPtr) {
+            if (fastPtr == slowPtr) {
                 return true;
             }
         }
         return false;
     }
 
+    //--------Start Node In A Loop
+    public ListNode startNodeInALoop() {
+        ListNode fastPtr = head;
+        ListNode slowPtr = head;
+        while (fastPtr != null && fastPtr.next != null) {
+            fastPtr = fastPtr.next.next;
+            slowPtr = slowPtr.next;
+            if (fastPtr == slowPtr) {
+                return getStatingNode(slowPtr);
+            }
+        }
+        return null;
+    }
+
+    private ListNode getStatingNode(ListNode slowPtr) {
+        ListNode tmp = head;
+        while (tmp != slowPtr) {
+            tmp = tmp.next;
+            slowPtr = slowPtr.next;
+        }
+        return tmp;//Starting Node of the Loop
+    }
+
     // CREATE A LOOP IN LINEKED LIST
     public void createALoopInLinkedList() {
+
         ListNode first = new ListNode(1);
         ListNode second = new ListNode(2);
         ListNode third = new ListNode(3);
         ListNode fourth = new ListNode(4);
         ListNode fifth = new ListNode(5);
         ListNode sixth = new ListNode(6);
+        head = first;
         first.next = second;
         second.next = third;
         third.next = fourth;
@@ -346,11 +371,11 @@ head trong lớp SinglyLinkedList là biến thành viên, được truy cập t
 Nếu  chỉ gọi sll.reverse(head), Java sẽ không biết head là gì vì head không phải là một biến cục bộ (local variable) trong phương thức main.
 
          */
-
         System.out.println("LinKedList with Loop");
+        sll.createALoopInLinkedList();
 
-        sll.display();
         System.out.println(sll.containsLoop());
+        System.out.println("The Start Of The Loop Is" +" "+ sll.startNodeInALoop().data);
 
         System.out.println("Length is" + sll.length());
 
