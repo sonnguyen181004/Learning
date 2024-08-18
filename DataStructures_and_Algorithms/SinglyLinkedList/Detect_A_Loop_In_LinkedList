@@ -1,0 +1,30 @@
+
+Cấu trúc danh sách liên kết:
+
+
+slowPtr: Con trỏ này di chuyển từng bước một.
+fastPtr: Con trỏ này di chuyển hai bước một lần.
+Mục đích của việc sử dụng hai con trỏ là để phát hiện xem có tồn tại vòng lặp trong danh sách hay không. Nếu có vòng lặp, fastPtr sẽ cuối cùng gặp slowPtr trong vòng lặp.
+
+
+
+ListNode fastPtr = head;
+ListNode slowPtr = head;
+while (fastPtr != null && fastPtr.next != null) {
+    fastPtr = fastPtr.next.next;
+    slowPtr = slowPtr.next;
+    if (slowPtr == fastPtr) {
+        return true;
+    }
+}
+return false;
+Khởi tạo:
+
+Cả fastPtr và slowPtr đều bắt đầu từ head của danh sách liên kết.
+Vòng lặp:
+
+Vòng lặp while chạy cho đến khi fastPtr không bằng null và fastPtr.next không bằng null.
+Bên trong vòng lặp:
+fastPtr di chuyển hai bước về phía trước (fastPtr = fastPtr.next.next).
+slowPtr di chuyển một bước về phía trước (slowPtr = slowPtr.next).
+Nếu tại bất kỳ thời điểm nào slowPtr bằng fastPtr, thì đã phát hiện ra vong lap và hàm trả về true.
