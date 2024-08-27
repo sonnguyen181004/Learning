@@ -1,5 +1,9 @@
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.List;
+import javafx.print.Collation;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -49,6 +53,30 @@ hoc them ve thuat toan tim gia tri lon nhat nho nhat trong list hoac màng
 
         }
         return null;
+    }
+
+    public List<Student> getListStudentWithGpaAbove3() {
+        List<Student> students = new ArrayList<>();
+        for (int i = 0; i < this.size(); i++) {
+            Student student = this.get(i);
+            if (student.getGpa() >= 3) {
+                students.add(student);
+            }
+        }
+        Collections.sort(students);
+
+        Comparator<Student> comparator = new Comparator<Student>() {
+            @Override
+            public int compare(Student o1, Student o2) {
+                return o1.getName().compareTo(o2.getName());
+            }
+        };
+
+        // Sử dụng Collections.sort bên ngoài định nghĩa Comparator
+        Collections.sort(students, comparator);
+
+        return students;
+
     }
 
 }
