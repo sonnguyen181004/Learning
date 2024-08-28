@@ -1,0 +1,36 @@
+
+Doubly Linked List là  danh sách liên kết mà mỗi node (nút) có hai con trỏ
+một con trỏ trỏ tới node phía trước (previous) 
+một con trỏ trỏ tới node phía sau (next).  khác với Singly Linked List, nơi mỗi node chỉ có một con trỏ trỏ tới node kế tiếp (next).
+
+
+Điều Hướng Hai Chiều: Trong Doubly Linked List,có thể điều hướng qua lại giữa các node theo cả hai hướng 
+(trước và sau).
+ không thể thực hiện được trong Singly Linked List.
+
+Xóa Node: Trong Singly Linked List, để xóa một node, bạn cần phải có một con trỏ trỏ tới node trước đó.
+trong Doubly Linked List, bạn có thể xóa một node mà không cần con trỏ trỏ tới node trước đó nhờ vào con
+trỏ previous của node hiện tại.
+
+
+Một node trong Doubly Linked List chứa ba thành phần chính:
+
+previous: Con trỏ trỏ tới node trước đó trong danh sách.
+data: Giá trị hoặc thông tin mà node đang lưu trữ.
+next: Con trỏ trỏ tới node kế tiếp trong danh sách.
+một Doubly Linked List với các giá trị: 1, 10, 15, 65, các node sẽ được liên kết 
+
+
+null <- [1] <-> [10] <-> [15] <-> [65] -> null
+Head: Node đầu tiên (1) trong danh sách.
+Tail: Node cuối cùng (65) trong danh sách.
+,mỗi node có hai con trỏ:
+
+Node 1: previous = null, next = 10
+Node 10: previous = 1, next = 15
+Node 15: previous = 10, next = 65
+Node 65: previous = 15, next = null
+Loi Ich
+Thuận tiện trong việc duyệt ngược lại danh sách: có thể duyệt qua danh sách từ cuối về đầu một cách dễ dàng.
+Dễ dàng hơn trong việc xóa node: Không cần phải giữ tham chiếu tới node trước đó để xóa một node trong danh sách.
+Doubly Linked List là một cấu trúc dữ liệu hữu ích khicần một danh sách cho phép điều hướng linh hoạt giữa các phần tử, cũng như cung cấp các thao tác thêm, xóa một cách hiệu quả.
