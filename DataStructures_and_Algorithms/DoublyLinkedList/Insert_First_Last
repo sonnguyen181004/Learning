@@ -1,0 +1,53 @@
+Thêm một nút vào cuối danh sách liên kết
+
+ListNode newNode = new ListNode(value);
+if (isEmpty()) {
+    head = newNode;
+} else {
+    tail.next = newNode;
+    newNode.previous = tail;
+}
+tail = newNode;
+head và tail đều trỏ đến nút đầu tiên trong danh sách, chứa giá trị 1.
+Con trỏ next của nút này trỏ đến null, điều này có nghĩa là hiện tại nó là nút cuối cùng trong danh sách.
+Con trỏ previous của nút này cũng trỏ đến null, bởi vì nó cũng là nút đầu tiên trong danh sách.
+Tạo nút mới (newNode):
+
+Một nút mới được khởi tạo.
+Nút này ban đầu chưa được liên kết với danh sách, do đó newNode.next và newNode.previous đều trỏ đến null.
+Cập nhật danh sách:
+
+Trong phần mã, tail.next = newNode; điều này có nghĩa là con trỏ next của nút hiện đang là tail 
+sẽ trỏ đến newNode.
+newNode.previous = tail; cập nhật con trỏ previous của newNode để nó trỏ đến tail hiện tại
+Cuối cùng, tail = newNode; cập nhật tail để nó trỏ đến newNode, vì nút này bây giờ là nút cuối cùng trong danh sách.
+K
+Nút đầu tiên có next trỏ tới newNode, và newNode có previous trỏ lại nút đầu tiên.
+Con trỏ next của newNode và con trỏ previous của nút đầu tiên đều trỏ tới null, 
+cho thấy danh sách đã hoàn thành việc liên kết các nút.
+
+
+ListNode newNode = new ListNode(value);
+if (isEmpty()) {
+    tail = newNode;
+} else {
+    head.previous = newNode;
+    newNode.next = head;
+}
+head = newNode;
+Danh sách ban đầu:
+
+
+Tạo nút mới (newNode):
+
+Một nút mới với giá trị 10 được khởi tạo với cả next và previous trỏ đến null.
+
+
+Trong phần mã, head.previous = newNode; 
+cập nhật con trỏ previous của nút head hiện tại  để nó trỏ đến newNode.
+newNode.next = head; cập nhật con trỏ next của newNode để nó trỏ đến head hiện tại.
+Cuối cùng, head = newNode; cập nhật head để nó trỏ đến newNode, vì nút này bây giờ là nút đầu tiên trong danh sách.
+
+
+
+n\
