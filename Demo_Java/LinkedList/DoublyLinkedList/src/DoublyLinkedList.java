@@ -70,10 +70,23 @@ public class DoublyLinkedList {
     newNode.next=head;
     head=newNode;
     length++;
+    }   
+    public void insertLast(int value){
+    ListNode newNode=new ListNode(value);
+    if(isEmpty()){
+    head=newNode;
+    }
+    else{
+        tail.next=newNode;
+        newNode.previous=tail;
+    }
+    tail=newNode;
+    length++;
     }
     public static void main(String[] args) {
         DoublyLinkedList dll=new DoublyLinkedList();
         dll.insertFirst(1);
+        dll.insertLast(10);
         dll.displayForward();
         dll.displayBackward();
     }
