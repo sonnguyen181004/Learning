@@ -83,12 +83,31 @@ public class DoublyLinkedList {
     tail=newNode;
     length++;
     }
+    public ListNode deleteFirst(){
+    if(isEmpty()){
+    return head;
+    }
+    ListNode temp=head;
+    if(head==tail){
+    tail=null;
+    }else{
+    head.next.previous=null;
+    }
+    head=head.next;
+    temp.next=null;
+    length--;
+    return temp;
+    }
     public static void main(String[] args) {
         DoublyLinkedList dll=new DoublyLinkedList();
         dll.insertFirst(1);
         dll.insertLast(10);
+        dll.insertLast(15);
         dll.displayForward();
         dll.displayBackward();
+        
+        dll.deleteFirst();
+        dll.displayForward();
     }
     }   
 
