@@ -1,0 +1,31 @@
+if (isEmpty()) {
+    throw new NoSuchElementException();
+}
+ListNode temp = head;
+if (head == tail) {
+    tail = null;
+} else {
+    head.next.previous = null;
+}
+head = head.next;
+temp.next = null;
+return temp;
+
+if (isEmpty()): Kiểm tra xem danh sách liên kết đôi có trống hay không bằng cách gọi phương thức isEmpty().
+throw new NoSuchElementException();:
+Nếu danh sách trống, ném ra ngoại lệ NoSuchElementException để báo hiệu rằng không có phần tử nào để xóa.
+ListNode temp = head;: Gán nút đầu tiên của danh sách (head) cho biến tạm temp. 
+Biến này được dùng để lưu trữ nút cần xóa tạm thời để có thể trả về sau khi xóa.
+if (head == tail): Kiểm tra xem head có bằng với tail hay không. Nếu đúng, điều này có nghĩa là danh sách chỉ có một nút.
+tail = null;: Nếu danh sách chỉ có một nút, gán tail về null, 
+điều này đồng nghĩa với việc danh sách sẽ trở thành trống sau khi nút đầu tiên bị xóa.
+
+else: Nếu danh sách có nhiều hơn một nút (head != tail), mã trong else sẽ được thực thi.
+head.next.previous = null;: Đặt con trỏ previous của nút thứ hai (nút ngay sau head) về null. Điều này ngắt liên kết giữa nút đầu tiên (sắp bị xóa) và nút thứ hai, 
+làm cho nút thứ hai trở thành nút đầu tiên của danh sách.
+
+
+temp.next = null;: Ngắt liên kết của nút temp (nút đầu tiên ban đầu) với phần còn lại của danh sách bằng cách đặt con trỏ next của nó về null.
+Điều này đảm bảo rằng nút đã bị xóa không còn liên kết với danh sách.
+head = head.next;: Cập nhật head để trỏ tới nút thứ hai trong danh sách, 
+biến nó thành nút đầu tiên mới sau khi nút đầu tiên bị xóa
