@@ -1,6 +1,6 @@
 Danh sách Liên kết Đơn Vòng (Circular Singly Linked List):
-Khái niệm cơ bản:
-Danh sách liên kết đơn vòng là một biến thể của danh sách liên kết đơn, trong đó node cuối cùng không trỏ đến null, mà trỏ ngược lại node đầu tiên trong danh sách.
+:
+Danh sách liên kết đơn vòng là một biến thể của danh sách liên kết đơn, trong đó node cuối cùng không trỏ đến null, mà trỏ ngược lại node đầu tiên trong danh sách.(head)
 Điều này tạo ra một vòng tròn kín trong cấu trúc dữ liệu, vì vậy không có điểm kết thúc rõ ràng khi duyệt qua danh sách.
 Cấu trúc:
 Mỗi node trong danh sách liên kết đơn vòng có hai phần:
@@ -13,12 +13,11 @@ Cách hoạt động:
 Khởi đầu từ node đầu tiên (thường được gọi là head).
 Duyệt qua từng node bằng cách di chuyển từ node này sang node khác qua phần Next.
 Khi đến node cuối cùng (node mà phần Next trỏ về node đầu tiên), quá trình duyệt tiếp tục từ node đầu tiên, tạo thành một vòng lặp vô tận.
-Ví dụ từ hình ảnh:
+
 Danh sách liên kết đơn vòng được minh họa với các giá trị 1 -> 8 -> 10 -> 16.
 Node cuối cùng chứa giá trị 16, thay vì trỏ đến null, nó trỏ ngược lại node đầu tiên chứa giá trị 1.
 Điều này tạo ra một vòng lặp như sau: 1 -> 8 -> 10 -> 16 -> 1 -> 8 -> 10 -> 16...
-Ứng dụng:
-Danh sách liên kết đơn vòng thường được sử dụng trong các hệ thống mà vòng lặp liên tục là cần thiết, chẳng hạn như trong các hệ thống điều phối vòng tròn (round-robin scheduling) hoặc khi cần duyệt một danh sách nhiều lần mà không cần quay lại đầu danh sách thủ công.
+
 Lợi ích:
 Không cần kiểm tra kết thúc: Không cần kiểm tra điều kiện kết thúc khi duyệt danh sách, vì nó luôn trở về đầu khi kết thúc một chu kỳ.
 Tiết kiệm bộ nhớ: Không cần một node null để đánh dấu kết thúc danh sách.
