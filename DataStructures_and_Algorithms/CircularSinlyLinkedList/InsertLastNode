@@ -1,0 +1,46 @@
+java
+Copy code
+ListNode temp = new ListNode(data);
+if(last == null) {
+    last = temp;
+    last.next = last;
+} else {
+    temp.next = last.next;
+    last.next = temp;
+    last = temp;
+}
+length++;
+Tạo một Node mới:
+
+
+ListNode temp = new ListNode(data);
+Một node mới (temp) được tạo với giá trị data. Con trỏ next của node này ban đầu trỏ đến null.
+Kiểm tra xem danh sách có rỗng không:
+
+
+if(last == null) {
+    last = temp;
+    last.next = last;
+}
+Đoạn mã này kiểm tra xem danh sách có rỗng không bằng cách kiểm tra nếu last là null.
+Trường hợp rỗng: Nếu danh sách rỗng, node mới (temp) trở thành node đầu tiên và cũng là node cuối cùng trong danh sách.
+Tự liên kết: Con trỏ next của last (bây giờ là temp) trỏ ngược lại chính nó, 
+tạo thành một danh sách liên kết vòng với chỉ một node. 
+Trường hợp danh sách không rỗng:
+
+
+else {
+    temp.next = last.next;
+    last.next = temp;
+    last = temp;
+}
+Liên kết node mới: Nếu danh sách không rỗng, con trỏ next của temp sẽ trỏ đến node mà last.next đang trỏ tới (node đầu tiên trong danh sách).
+Cập nhật last.next: Sau đó, con trỏ next của last sẽ được cập nhật để trỏ đến node mới (temp).
+Cập nhật last: Cuối cùng, last được cập nhật để trỏ đến temp, 
+làm cho node mới này trở thành node cuối cùng trong danh sách.
+Tăng độ dài của danh sách:
+
+
+length++;
+Độ dài của danh sách được tăng thêm 1 để phản ánh việc thêm node mới.
+
