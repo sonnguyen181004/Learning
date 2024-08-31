@@ -1,0 +1,89 @@
+Stack<Character> stack = new Stack<>();
+char[] chars = str.toCharArray();
+
+// Đẩy các ký tự vào stack
+for (char c : chars) {
+    stack.push(c);
+}
+
+// Lấy các ký tự ra từ stack để đảo ngược
+for (int i = 0; i < str.length(); i++) {
+    chars[i] = stack.pop();
+}
+
+return new String(chars); // Trả về chuỗi đã đảo ngược
+
+Đoạn mã đầu tiên là khởi tạo một stack để lưu trữ các ký tự và chuyển chuỗi sang mảng ký tự:
+Stack<Character> stack = new Stack<>();
+char[] chars = str.toCharArray();  // Biến str có giá trị là "ABCD"
+Biến stack là một đối tượng của lớp Stack, và nó sẽ lưu trữ các ký tự của chuỗi theo kiểu Character.
+Phương thức toCharArray() chuyển chuỗi "ABCD" thành mảng ký tự chars[] có giá trị:
+
+chars = ['A', 'B', 'C', 'D']
+2. Đẩy từng ký tự vào stack:
+Tiếp theo, đoạn mã này thực hiện vòng lặp để đẩy từng ký tự trong mảng chars[] vào stack:
+
+for (char c : chars) {
+    stack.push(c);
+}
+Vòng lặp for-each: Vòng lặp này duyệt qua từng ký tự trong mảng chars[].
+stack.push(c): Mỗi ký tự sẽ được đẩy vào stack theo thứ tự xuất hiện trong mảng.
+Quá trình đẩy vào stack:
+
+Đầu tiên, A được đẩy vào stack → Stack có: A.
+Sau đó, B được đẩy vào → Stack có: B, A.
+Tiếp theo, C được đẩy vào → Stack có: C, B, A.
+Cuối cùng, D được đẩy vào → Stack có: D, C, B, A.
+Trạng thái của stack lúc này (phần tử trên cùng là phần tử sẽ được lấy ra đầu tiên):
+
+css
+
+D (Top)
+C
+B
+A
+3. Lấy ký tự ra từ stack để đảo ngược chuỗi:
+Đoạn mã tiếp theo sẽ lấy các ký tự ra từ stack và gán lại vào mảng chars[]:
+
+for (int i = 0; i < str.length(); i++) {
+    chars[i] = stack.pop();
+}
+Vòng lặp for: Vòng lặp này duyệt qua từng chỉ số của mảng chars[], từ 0 đến str.length() - 1.
+stack.pop(): Phương thức pop() sẽ lấy phần tử trên cùng của stack và xóa nó khỏi stack.
+Các ký tự được lấy ra từ stack theo thứ tự ngược lại và được gán lại vào chars[].
+Quá trình lấy ra và gán lại vào mảng:
+
+Lần 1: D được lấy ra và gán vào chars[0] → chars = ['D', 'B', 'C', 'D'].
+Lần 2: C được lấy ra và gán vào chars[1] → chars = ['D', 'C', 'C', 'D'].
+Lần 3: B được lấy ra và gán vào chars[2] → chars = ['D', 'C', 'B', 'D'].
+Lần 4: A được lấy ra và gán vào chars[3] → chars = ['D', 'C', 'B', 'A'].
+Trạng thái của stack lúc này là rỗng, và mảng chars[] đã được đảo ngược.
+
+4. Trả về chuỗi mới đã đảo ngược:
+Cuối cùng, chúng ta chuyển mảng chars[] đã đảo ngược thành một chuỗi mới:
+
+return new String(chars);
+Phương thức này tạo một đối tượng chuỗi mới từ mảng chars[] đã đảo ngược.
+Kết quả: Chuỗi mới là "DCBA".
+Tổng hợp:
+Bước 1: Khởi tạo stack và chuyển chuỗi thành mảng ký tự.
+Bước 2: Duyệt qua mảng ký tự và đẩy từng ký tự vào stack.
+Bước 3: Lấy từng ký tự ra từ stack và gán lại vào mảng theo thứ tự ngược.
+Bước 4: Chuyển mảng ký tự đã đảo ngược thành chuỗi và trả về.
+Mô phỏng bằng hình ảnh:
+Trạng thái ban đầu:
+
+
+chars[] = ['A', 'B', 'C', 'D']
+Sau khi đẩy vào stack:
+
+
+Stack: D -> C -> B -> A
+Sau khi lấy ra từ stack và gán lại:
+
+
+chars[] = ['D', 'C', 'B', 'A']
+Chuỗi cuối cùng:
+
+
+Chuỗi kết quả: "DCBA"
