@@ -9,33 +9,33 @@
  * @author PC
  */
 public class CircularSinglyLinkedList {
-    
+
     private ListNode last;
     private int length;
-    
+
     private class ListNode {
-        
+
         private ListNode next;
         private int data;
-        
+
         public ListNode(int data) {
             this.data = data;
         }
     }
-    
+
     public CircularSinglyLinkedList() {
         last = null;
         length = 0;
     }
-    
+
     public int length() {
         return length;
     }
-    
+
     public boolean isEmpty() {
         return length == 0;
     }
-    
+
     public void createCircularSinlyLinkedList() {
         ListNode first = new ListNode(1);
         ListNode second = new ListNode(2);
@@ -47,7 +47,7 @@ public class CircularSinglyLinkedList {
         fourth.next = first;
         last = fourth;
     }
-    
+
     public void display() {
         if (last == null) {
             return;
@@ -59,7 +59,7 @@ public class CircularSinglyLinkedList {
         }
         System.out.print(first.data);
     }
-    
+
     public void insertFirst(int data) {
         ListNode tmp = new ListNode(data);
         if (last == null) {
@@ -83,7 +83,21 @@ public class CircularSinglyLinkedList {
         }
         length++;
     }
-    
+
+    public ListNode removefirst() {
+        if (isEmpty()) {
+            return last;
+        }
+        ListNode tmp = last.next;
+        if (last.next == last) {
+            last = null;
+        } else {
+            last.next = tmp.next;
+        }
+        length--;
+        return tmp;
+    }
+
     public static void main(String[] args) {
         CircularSinglyLinkedList cll = new CircularSinglyLinkedList();
         cll.insertFirst(10);
@@ -92,6 +106,10 @@ public class CircularSinglyLinkedList {
         cll.insertLast(4);
         cll.insertLast(3);
         cll.display();
+        System.out.println("Remove first");
+        cll.removefirst();
+        
+        cll.display();
     }
-    
+
 }
