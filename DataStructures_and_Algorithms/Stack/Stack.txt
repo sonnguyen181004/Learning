@@ -1,5 +1,4 @@
 
-Để giải thích chi tiết hơn về Stack (Ngăn xếp), chúng ta sẽ đi sâu vào các khái niệm chính, cách hoạt động của nó, và các ứng dụng thực tế.
 
 1. Cấu trúc của Stack
 Ngăn xếp (Stack) là một danh sách các phần tử mà chỉ có thể thao tác từ một đầu, được gọi là "đỉnh" (top).
