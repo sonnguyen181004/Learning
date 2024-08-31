@@ -1,0 +1,34 @@
+
+public void push(int data) {
+    ListNode temp = new ListNode(data);
+    temp.next = top;
+    top = temp;
+    length++;
+}
+
+ListNode temp = new ListNode(data);: Một đối tượng ListNode mới được tạo ra với dữ liệu (data) 
+mà bạn muốn thêm vào stack.
+temp.next = top;: next của phần tử mới sẽ trỏ đến phần tử hiện đang ở đỉnh (top) của stack.
+top = temp;: Sau đó, phần tử mới này được thiết lập làm phần tử đỉnh mới của stack.
+length++;: Chiều dài (số phần tử) của stack được tăng lên một đơn vị.
+
+2. Thao tác Pop
+Mã giả Pop:
+
+
+public int pop() {
+    int result = top.data;
+    top = top.next;
+    length--;
+    return result;
+}
+Giải thích:
+
+int result = top.data;: Lấy dữ liệu của phần tử ở đỉnh stack và lưu trữ nó trong biến result.
+top = top.next;: Di chuyển đỉnh của stack sang phần tử kế tiếp (phần tử ngay dưới đỉnh hiện tại).
+length--;: Chiều dài của stack giảm đi một đơn vị.
+return result;: Trả về dữ liệu của phần tử đã được loại bỏ khỏi stack.
+
+
+Push: Thêm một phần tử mới vào đỉnh stack, cập nhật đỉnh stack và tăng chiều dài stack.
+Pop: Loại bỏ phần tử đỉnh khỏi stack, cập nhật đỉnh mới, giảm chiều dài stack, và trả về giá trị của phần tử vừa bị loại bỏ.
