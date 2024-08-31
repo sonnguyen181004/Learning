@@ -1,0 +1,50 @@
+if(isEmpty()){
+    throw new NoSuchElementException();
+}
+ListNode temp = last.next;
+if(last.next == last){
+    last = null;
+} else {
+    last.next = temp.next;
+}
+temp.next = null;
+length--;
+return temp;
+Kiểm tra danh sách rỗng:
+
+
+if(isEmpty()){
+    throw new NoSuchElementException();
+}
+Đoạn mã này kiểm tra xem danh sách có rỗng hay không bằng cách gọi phương thức isEmpty().
+Nếu rỗng: Nếu danh sách rỗng (không có node nào), 
+một ngoại lệ NoSuchElementException sẽ được ném ra để thông báo rằng không thể xóa node nào cả.
+Lấy node đầu tiên (node cần xóa):
+
+
+ListNode temp = last.next;
+Con trỏ temp được gán giá trị của last.next, tức là con trỏ đến node đầu tiên (node ngay sau node cuối cùng). Đây là node sẽ bị xóa khỏi danh sách.
+Kiểm tra xem danh sách có chỉ một node:
+
+
+if(last.next == last){
+    last = null;
+}
+Đoạn mã này kiểm tra xem danh sách có chỉ một node hay không bằng cách so sánh last.next với last.
+Nếu danh sách chỉ có một node: Nếu last.next trỏ đến chính nó, điều này có nghĩa là danh sách chỉ có một node. Trong trường hợp này, last sẽ được gán null, khiến danh sách trở nên rỗng.
+Xóa node đầu tiên nếu danh sách có nhiều hơn một node:
+
+
+else {
+    last.next = temp.next;
+}
+Nếu danh sách có nhiều hơn một node: Con trỏ next của last sẽ được cập nhật để trỏ đến node tiếp theo của node đầu tiên, nghĩa là bỏ qua node đầu tiên (temp). Điều này thực hiện việc xóa node đầu tiên khỏi danh sách.
+Cắt liên kết và trả về node bị xóa:
+
+
+temp.next = null;
+length--;
+return temp;
+Con trỏ next của node bị xóa (temp) được gán giá trị null để cắt bỏ bất kỳ liên kết nào còn lại.
+Biến length được giảm đi 1 để cập nhật số lượng node trong danh sách.
+Cuối cùng, node bị xóa (temp) được trả về
