@@ -1,0 +1,39 @@
+ListNode temp = new ListNode(data);
+if(last == null) {
+    last = temp;
+} else {
+    temp.next = last.next;
+}
+last.next = temp;
+length++;
+Tạo một Node moi:
+
+
+ListNode temp = new ListNode(data);
+Một node mới (temp) được tạo với giá trị data đã cho. Node này chưa được liên kết với danh sách hiện tại.
+Kiểm tra xem danh sách có rỗng không:
+
+
+if(last == null) {
+    last = temp;
+}
+Mã kiểm tra xem danh sách có rỗng không bằng
+cách kiểm tra nếu last là null. Nếu last là null, danh sách rỗng và node mới (temp) sẽ 
+trở thành node đầu tiên và cuối cùng trong danh sách.
+
+
+else {
+    temp.next = last.next;
+}
+Nếu danh sách không rỗng, con trỏ next của temp được đặt để trỏ đến node mà last.next đang trỏ tới
+
+Cập nhật Node cuối cùng:
+
+
+last.next = temp;
+Con trỏ next của node cuối cùng hiện tại (last) được cập nhật để trỏ đến node mới (temp), làm cho temp trở thành node cuối cùng mới trong danh sách.
+Tăng độ dài của danh sách:
+
+
+length++;
+Cuối cùng, độ dài của danh sách liên kết được tăng thêm 1 để phản ánh việc thêm node mới.
