@@ -60,9 +60,22 @@ public class CircularSinglyLinkedList {
         System.out.print(first.data);
     }
 
+    public void insertFirst(int data) {
+        ListNode tmp = new ListNode(data);
+        if (last == null) {
+            last = tmp;
+        } else {
+            tmp.next = last.next;
+        }
+        last.next = tmp;
+        length++;
+    }
+
     public static void main(String[] args) {
         CircularSinglyLinkedList cll = new CircularSinglyLinkedList();
-        cll.createCircularSinlyLinkedList();
+        cll.insertFirst(10);
+        cll.insertFirst(4);
+        cll.insertFirst(5);
         cll.display();
     }
 
