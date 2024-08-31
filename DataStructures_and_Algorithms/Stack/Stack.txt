@@ -1,0 +1,30 @@
+
+Để giải thích chi tiết hơn về Stack (Ngăn xếp), chúng ta sẽ đi sâu vào các khái niệm chính, cách hoạt động của nó, và các ứng dụng thực tế.
+
+1. Cấu trúc của Stack
+Ngăn xếp (Stack) là một danh sách các phần tử mà chỉ có thể thao tác từ một đầu, được gọi là "đỉnh" (top).
+Các phần tử được thêm vào ngăn xếp bằng cách "đẩy" (push) chúng lên đỉnh, và loại bỏ bằng cách "kéo" (pop) chúng ra khỏi đỉnh.
+2. Nguyên tắc LIFO (Last In, First Out)
+LIFO là viết tắt của "Last In, First Out", có nghĩa là phần tử được thêm vào cuối cùng sẽ là phần tử đầu tiên được lấy ra.
+Ví dụ: Giả sử bạn có một stack và bạn đẩy lần lượt các phần tử 5, 10, 15 vào ngăn xếp. Phần tử 15 sẽ nằm ở đỉnh và sẽ là phần tử đầu tiên bị lấy ra khi bạn thực hiện thao tác pop.
+3. Các thao tác cơ bản trên Stack
+Push (Đẩy): Thao tác này thêm một phần tử vào đỉnh của stack.
+
+Ví dụ: Nếu stack hiện tại có các phần tử [10, 20] và bạn thực hiện push(30), stack sẽ trở thành [10, 20, 30].
+Pop (Kéo): Thao tác này loại bỏ phần tử ở đỉnh của stack.
+
+Ví dụ: Nếu stack hiện tại là [10, 20, 30] và bạn thực hiện pop(), phần tử 30 sẽ bị loại bỏ, và stack còn lại [10, 20].
+Peek (Xem đỉnh): Thao tác này cho phép bạn xem phần tử ở đỉnh của stack mà không loại bỏ nó.
+
+Ví dụ: Nếu stack hiện tại là [10, 20, 30], thao tác peek() sẽ trả về 30 mà không thay đổi stack.
+IsEmpty (Kiểm tra rỗng): Thao tác này kiểm tra xem stack có rỗng hay không.
+
+Ví dụ: Nếu stack là [], thì IsEmpty() sẽ trả về true.
+4. Các ứng dụng thực tế của Stack
+Hoàn tác (Undo): Khi bạn sử dụng các phần mềm như Microsoft Word hoặc Photoshop, mỗi hành động của bạn đều được lưu vào một stack. Khi bạn nhấn "Undo", hành động cuối cùng trong stack sẽ bị loại bỏ, đưa bạn trở về trạng thái trước đó.
+
+Duyệt biểu thức: Stack được sử dụng trong việc phân tích cú pháp biểu thức toán học. Khi bạn cần chuyển đổi giữa biểu thức trung tố (như 3 + 4) và hậu tố (như 3 4 +), bạn có thể sử dụng stack để thực hiện điều này.
+
+Gọi hàm đệ quy: Trong lập trình, khi một hàm gọi chính nó (hàm đệ quy), hệ thống sẽ sử dụng một stack để lưu trữ trạng thái của các cuộc gọi hàm. Khi hàm kết thúc, hệ thống sẽ pop trạng thái từ stack để tiếp tục thực hiện hàm.
+
+Quản lý bộ nhớ: Các ngôn ngữ lập trình như C/C++ sử dụng stack để quản lý bộ nhớ tạm thời. Mỗi khi một hàm được gọi, các biến cục bộ của hàm đó được lưu trữ trong stack. Khi hàm kết thúc, không gian bộ nhớ này được giải phóng.
