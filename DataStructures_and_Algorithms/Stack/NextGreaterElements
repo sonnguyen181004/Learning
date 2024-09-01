@@ -1,0 +1,114 @@
+1. Mục tiêu của bài toán
+Mục tiêu của bài toán là: với mỗi phần tử trong mảng, 
+chúng ta cần tìm phần tử đầu tiên ở phía bên phải mà lớn hơn nó.
+Nếu không có phần tử nào lớn hơn, kết quả sẽ là -1.
+
+Ví dụ:
+
+Với mảng arr[] = {4, 7, 3, 4, 8, 1}, chúng ta cần tạo ra mảng kết quả result[] tương ứng với mỗi phần tử, như sau:
+Phần tử lớn hơn kế tiếp của 4 là 7.
+Phần tử lớn hơn kế tiếp của 7 là 8.
+Phần tử lớn hơn kế tiếp của 3 là 4.
+Phần tử lớn hơn kế tiếp của 4 là 8.
+Phần tử lớn hơn kế tiếp của 8 không tồn tại, do đó kết quả là -1.
+Phần tử lớn hơn kế tiếp của 1 cũng không tồn tại, kết quả là -1.
+2. Chi tiết từng bước của thuật toán
+Nguyên lý hoạt động:
+Thuật toán sử dụng ngăn xếp (stack) để hỗ trợ việc so sánh các phần tử trong mảng.
+Ngăn xếp giúp ta lưu trữ các phần tử trong khi duyệt qua mảng và hỗ trợ truy cập phần 
+tử gần nhất nhanh chóng nhờ cơ chế LIFO (Last In, First Out).
+ duyệt mảng từ phải sang trái (bắt đầu từ phần tử cuối cùng). 
+Tại mỗi phần tử, chúng ta sẽ kiểm tra ngăn xếp:
+Nếu đỉnh ngăn xếp là phần tử lớn hơn phần tử hiện tại, thì đó là phần tử lớn hơn kế tiếp.
+Nếu đỉnh ngăn xếp nhỏ hơn hoặc bằng phần tử hiện tại, ta sẽ loại bỏ phần tử đó khỏi ngăn xếp (vì nó không thể là phần tử lớn hơn kế tiếp của bất kỳ phần tử nào phía trước).
+Chi tiết mã nguồn và giải thích từng dòng:
+
+int[] nextGreaterElement(int[] arr) {
+    int[] result = new int[arr.length];   // (1) Khởi tạo mảng kết quả với cùng kích thước mảng đầu vào.
+    Stack<Integer> stack = new Stack<>(); // (2) Tạo ngăn xếp để lưu các phần tử đang xét.
+
+    // (3) Duyệt mảng từ cuối về đầu.
+    for (int i = arr.length - 1; i >= 0; i--) {
+        // (4) Loại bỏ các phần tử trong ngăn xếp nhỏ hơn hoặc bằng phần tử hiện tại.
+        while (!stack.isEmpty() && stack.peek() <= arr[i]) {
+            stack.pop(); // (5) Nếu phần tử nhỏ hơn hoặc bằng phần tử hiện tại, loại bỏ nó khỏi ngăn xếp.
+        }
+
+        // (6) Kiểm tra ngăn xếp rỗng.
+        if (stack.isEmpty()) {
+            result[i] = -1; // (7) Nếu ngăn xếp trống, không có phần tử lớn hơn nào, gán giá trị -1.
+        } else {
+            result[i] = stack.peek(); // (8) Nếu ngăn xếp không trống, đỉnh ngăn xếp là phần tử lớn hơn kế tiếp.
+        }
+
+        // (9) Đưa phần tử hiện tại vào ngăn xếp để tiếp tục xử lý với các phần tử phía trước.
+        stack.push(arr[i]);
+    }
+
+    return result; // (10) Trả về mảng kết quả.
+}
+Diễn giải cụ thể từng dòng:
+Dòng 1:
+
+int[] result = new int[arr.length];
+Khởi tạo mảng kết quả result[] với cùng kích thước với mảng đầu vào arr[]. Mảng này sẽ chứa các giá trị phần tử lớn hơn kế tiếp của từng phần tử trong arr[].
+Dòng 2:
+
+Stack<Integer> stack = new Stack<>();
+Khởi tạo một ngăn xếp trống. Ngăn xếp này dùng để lưu trữ các phần tử trong quá trình duyệt mảng.
+Dòng 4:
+
+for (int i = arr.length - 1; i >= 0; i--)
+Đây là vòng lặp duyệt mảng từ phần tử cuối cùng (chỉ số arr.length - 1) đến phần tử đầu tiên (chỉ số 0).
+Dòng 5:
+
+while (!stack.isEmpty() && stack.peek() <= arr[i])
+Trong khi ngăn xếp không rỗng và đỉnh ngăn xếp nhỏ hơn hoặc bằng phần tử hiện tại (arr[i])xoa phần tử đó ra khỏi ngăn xếp. Điều này có nghĩa là các phần tử này không còn ý nghĩa với phần tử hiện tại (vì chúng nhỏ hơn hoặc bằng nó và sẽ không thể là phần tử lớn hơn kế tiếp cho các phần tử phía trước).
+Dòng 7:
+
+if (stack.isEmpty()) result[i] = -1;
+Nếu ngăn xếp rỗng sau khi kiểm tra, điều này có nghĩa là không có phần tử nào lớn hơn phần tử hiện tại,
+do đó chúng ta gán giá trị -1 cho result[i].
+Dòng 8:
+
+result[i] = stack.peek();
+Nếu ngăn xếp không rỗng, điều này có nghĩa là đỉnh ngăn xếp là phần tử lớn hơn gần nhất với phần tử hiện tại. Vì vậy, ta gán giá trị của đỉnh ngăn xếp (stack.peek()) cho result[i].
+Dòng 9:
+
+stack.push(arr[i]);
+Thêm phần tử hiện tại vào ngăn xếp để so sánh với các phần tử tiếp theo (các phần tử bên trái trong mảng).
+Dòng 10:
+
+return result;
+Trả về mảng result[] chứa các phần tử lớn hơn kế tiếp hoặc -1 cho từng phần tử trong arr[].
+3. Phân tích quá trình thực thi cho ví dụ cụ thể
+ mảng arr[] = {4, 7, 3, 4, 8, 1},  sẽ duyệt từ phải qua trái:
+
+Phần tử 1 (index 5):
+
+Ngăn xếp ban đầu rỗng.
+Không có phần tử nào lớn hơn 1 => result[5] = -1.
+Thêm 1 vào ngăn xếp: stack = [1].
+Phần tử 8 (index 4):
+
+Đỉnh ngăn xếp là 1, nhỏ hơn 8 => loại bỏ 1 khỏi ngăn xếp.
+Ngăn xếp sau khi loại bỏ rỗng => result[4] = -1.
+Thêm 8 vào ngăn xếp: stack = [8].
+Phần tử 4 (index 3):
+
+Đỉnh ngăn xếp là 8, lớn hơn 4 => result[3] = 8.
+Thêm 4 vào ngăn xếp: stack = [8, 4].
+Phần tử 3 (index 2):
+
+Đỉnh ngăn xếp là 4, lớn hơn 3 => result[2] = 4.
+Thêm 3 vào ngăn xếp: stack = [8, 4, 3].
+Phần tử 7 (index 1):
+
+Đỉnh ngăn xếp là 3, nhỏ hơn 7 => loại bỏ 3.
+Đỉnh ngăn xếp là 4, nhỏ hơn 7 => loại bỏ 4.
+Đỉnh ngăn xếp là 8, lớn hơn 7 => result[1] = 8.
+Thêm 7 vào ngăn xếp: stack = [8, 7].
+Phần tử 4 (index 0):
+
+Đỉnh ngăn xếp là 7, lớn hơn 4 => result[0] = 7.
+Thêm 4 vào ngăn xếp: stack = [8, 7, 4].
