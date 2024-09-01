@@ -1,0 +1,91 @@
+huỗi gồm các dấu ngoặc {, }, (, ), [, ]. kiểm tra xem chuỗi đó có hợp lệ không, nghĩa là các dấu ngoặc phải mở và đóng đúng thứ tự.
+
+Ý tưởng 
+Dùng ngăn xếp (stack) để lưu trữ các dấu ngoặc mở.
+Khi gặp dấu ngoặc đóng, kiểm tra xem có dấu ngoặc mở tương ứng ở đầu ngăn xếp không. N
+ếu có thì xóa dấu ngoặc mở khỏi ngăn xếp, nếu không thì chuỗi không hợp lệ.
+
+
+boolean isValid(String s) {
+    Stack<Character> stack = new Stack<>();
+    for(char c : s.toCharArray()) {
+        if(c == '(' || c == '{' || c == '[') {
+            stack.push(c);
+        } else {
+            if(stack.isEmpty()) {
+                return false;
+            } else {
+                char top = stack.peek();
+                if((c == ')' && top == '(') || 
+                   (c == '}' && top == '{') || 
+                   (c == ']' && top == '[')) {
+                    stack.pop();
+                } else {
+                    return false;
+                }
+            }
+        }
+    }
+    return stack.isEmpty();
+}\
+
+
+
+
+
+Tạo ngăn xếp (stack):
+
+Stack<Character> stack = new Stack<>();
+
+sử dụng một ngăn xếp để lưu trữ các dấu ngoặc mở. Ngăn xếp hoạt động theo nguyên tắc LIFO (Last In First Out), tức là phần tử được đưa vào sau cùng sẽ được lấy ra đầu tiên.
+Duyệt qua từng ký tự trong chuỗi:
+
+for(char c : s.toCharArray()) { ... }
+ sử dụng vòng lặp for để duyệt qua từng ký tự trong chuỗi s.
+Kiểm tra ký tự hiện tại:
+
+if(c == '(' || c == '{' || c == '[')
+Nếu ký tự hiện tại là một trong các dấu ngoặc mở (, {, [,  đẩy nó vào ngăn xếp (stack.push(c)).
+Xử lý dấu ngoặc đóng:
+
+else { ... }
+Nếu ký tự hiện tại là dấu ngoặc đóng ), }, ], ta thực hiện các bước sau:
+Kiểm tra ngăn xếp trống: if(stack.isEmpty())
+Nếu ngăn xếp trống (tức là không có dấu ngoặc mở nào để khớp với dấu đóng hiện tại), thì chuỗi không hợp lệ, trả về false.
+Lấy dấu ngoặc ở đỉnh ngăn xếp: char top = stack.peek();
+Nếu ngăn xếp không trống, lấy dấu ngoặc mở ở đỉnh ngăn xếp để kiểm tra xem nó có khớp với dấu ngoặc đóng hiện tại không.
+Kiểm tra cặp dấu ngoặc:
+if((c == ')' && top == '(') || (c == '}' && top == '{') || (c == ']' && top == '['))
+Nếu dấu ngoặc đóng c khớp với dấu ngoặc mở top ở đỉnh ngăn xếp, thì loại bỏ dấu ngoặc mở khỏi ngăn xếp (stack.pop()).
+Nếu không khớp: else { return false; }
+Nếu không khớp, chuỗi không hợp lệ, trả về false.
+Kiểm tra cuối cùng:
+
+return stack.isEmpty();
+Sau khi duyệt hết chuỗi, nếu ngăn xếp trống, nghĩa là tất cả các dấu ngoặc mở đã có cặp dấu đóng tương ứng, chuỗi hợp lệ, trả về true. Nếu ngăn xếp vẫn còn phần tử (tức là có dấu ngoặc mở chưa được đóng), trả về false.
+Ví dụ cụ thể với chuỗi "{()}"
+Khởi tạo:
+
+Chuỗi s = "{()}".
+Ngăn xếp stack ban đầu rỗng.
+Bước 1: Duyệt ký tự {
+
+{ là dấu ngoặc mở, đẩy vào ngăn xếp.
+Ngăn xếp sau bước này: {
+Bước 2: Duyệt ký tự (
+
+( là dấu ngoặc mở, đẩy vào ngăn xếp.
+Ngăn xếp sau bước này: {(
+Bước 3: Duyệt ký tự )
+
+) là dấu ngoặc đóng, kiểm tra đỉnh ngăn xếp.
+Đỉnh ngăn xếp là (, khớp với ), nên loại bỏ ( khỏi ngăn xếp.
+Ngăn xếp sau bước này: {
+Bước 4: Duyệt ký tự }
+
+} là dấu ngoặc đóng, kiểm tra đỉnh ngăn xếp.
+Đỉnh ngăn xếp là {, khớp với }, nên loại bỏ { khỏi ngăn xếp.
+Ngăn xếp sau bước này: rỗng
+Kết quả:
+
+Ngăn xếp trống sau khi duyệt hết chuỗi, nên chuỗi hợp lệ. Trả về true
