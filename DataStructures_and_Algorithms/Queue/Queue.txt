@@ -1,0 +1,52 @@
+
+Hàng đợi (queue) là một cấu trúc dữ liệu giống như một hàng xếp, 
+nơi các phần tử được xử lý theo nguyên tắc FIFO (First In, First Out). 
+Điều này có nghĩa là phần tử nào được thêm vào đầu tiên sẽ được lấy ra đầu tiên, 
+gi
+
+Front (Đầu hàng đợi):
+
+Đây là điểm mà phần tử đầu tiên được lưu trữ trong hàng đợi. Khilấy một phần tử ra khỏi hàng đợi (dequeue),
+sẽ lấy nó từ đầu hàng đợi này.
+Rear (Cuối hàng đợi):
+
+Đây là điểm mà phần tử mới sẽ được thêm vào hàng đợi. Khi thêm một phần tử vào hàng đợi (enqueue),
+sẽ thêm nó vào cuối hàng đợi này.
+Các thao tác chính trong hàng đợi:
+Enqueue (Thêm phần tử vào hàng đợi):
+
+ thêm một phần tử vào hàng đợi, phần tử này sẽ được đặt ở cuối hàng đợi.
+Ví dụ: nếu hàng đợi hiện tại có các phần tử [10, 20, 30], sau khi thêm 40, hàng đợi sẽ trở thành [10, 20, 30, 40].
+Dequeue (Lấy phần tử ra khỏi hàng đợi):
+
+Khi lấy một phần tử ra khỏi hàng đợi, phần tử này sẽ được lấy từ đầu hàng đợi. Ví dụ: nếu hàng đợi hiện tại là [10, 20, 30], sau khi lấy ra, hàng đợi sẽ trở thành [20, 30] và giá trị 10 sẽ được trả về.
+IsEmpty (Kiểm tra hàng đợi rỗng):
+
+Hàm này sẽ kiểm tra xem hàng đợi có trống không. Nếu hàng đợi không có phần tử nào, hàm sẽ trả về true, ngược lại sẽ trả về false.
+Peek (Xem phần tử đầu hàng đợi):
+
+Hàm này sẽ trả về giá trị của phần tử đầu tiên trong hàng đợi mà không lấy nó ra khỏi hàng đợi. 
+
+ có một hàng đợi rỗng:
+Bước 1: Thêm phần tử vào hàng đợi
+
+ thêm phần tử 10 vào hàng đợi. Lúc này, hàng đợi là [10].
+ thêm phần tử 20 vào hàng đợi. Hàng đợi sẽ trở thành [10, 20].
+thêm phần tử 30. Hàng đợi sẽ trở thành [10, 20, 30].
+Bước 2: Lấy phần tử ra khỏi hàng đợi
+
+Khi bạn lấy phần tử ra, phần tử 10 (phần tử đầu tiên) sẽ được lấy ra. Hàng đợi lúc này là [20, 30].
+Lấy tiếp phần tử tiếp theo, phần tử 20 sẽ được lấy ra. Hàng đợi bây giờ là [30].
+
+enqueue(10)
+enqueue(20)
+enqueue(30)
+print(queue)  // Output: [10, 20, 30]
+
+dequeue()    // Output: 10
+print(queue)  // Output: [20, 30]
+
+peek()       // Output: 20 (không xóa 20 khỏi hàng đợi)
+print(queue)  // Output: [20, 30]
+
+isEmpty()    // Output: false (hàng đợi không rỗng)
