@@ -1,0 +1,59 @@
+n-order Traversal là một cách duyệt cây nhị phân, trong đó thực hiện ba bước theo thứ tự sau:
+
+Duyệt cây con bên trái (Traverse the left subtree): Trước tiên, bạn duyệt tất cả các nút trong cây con bên trái của nút hiện tại.
+Thăm nút gốc (Visit the root node): Sau khi duyệt xong cây con bên trái,  quay lại thăm nút gốc (nút hiện tại).
+Duyệt cây con bên phải (Traverse the right subtree): Cuối cùng,  chuyển sang duyệt các nút trong cây con bên phải của nút hiện tại.
+Ví dụ về in-order traversal:
+Cây nhị phân được mô tả như sau:
+
+
+        1
+       / \
+      2   3
+     / \
+    4   5
+Bắt đầu từ gốc là nút 1.
+Duyệt cây con bên trái của 1: Đây là cây con với nút gốc là 2.
+Duyệt cây con bên trái của 2: Nút này là 4 (không có cây con nào nữa, nên duyệt xong 4).
+Quay lại thăm nút 2.
+Duyệt cây con bên phải của 2: Nút này là 5 (không có cây con nào nữa, nên duyệt xong 5).
+Quay lại thăm nút 1.
+Duyệt cây con bên phải của 1: Nút này là 3.
+Kết quả in-order traversal: 4, 2, 5, 1, 3.
+
+Cây nhị phân (Binary Tree) là gì?
+Cây nhị phân (Binary Tree) là một cấu trúc dữ liệu cây, trong đó mỗi nút (node) có tối đa hai nhánh con, gọi là cây con trái (left subtree) và cây con phải (right subtree). Cây nhị phân rất quan trọng trong khoa học máy tính và thường được sử dụng để lưu trữ dữ liệu có cấu trúc phân cấp, như biểu thức toán học, hệ thống phân cấp tổ chức, và tìm kiếm dữ liệu.
+
+Các thành phần chính của cây nhị phân:
+Nút (Node):
+
+Một phần tử trong cây nhị phân chứa giá trị (dữ liệu) và các con trỏ đến nút con.
+Mỗi nút có thể có tối đa hai nút con: nút con trái và nút con phải.
+Gốc (Root):
+
+Nút đầu tiên của cây nhị phân. Gốc là nơi bắt đầu của cây và không có nút cha.
+Lá (Leaf):
+
+Các nút cuối cùng trong cây, không có nút con. Ví dụ, trong một cây nhị phân đơn giản, nếu một nút không có cây con trái và cây con phải thì nó được gọi là nút lá.
+Cây con (Subtree):
+
+Để chèn một phần tử mới vào cây nhị phân, bạn bắt đầu từ gốc và so sánh giá trị của phần tử mới với giá trị của nút hiện tại để quyết định nên chèn vào cây con trái hay cây con phải. Quá trình này tiếp tục cho đến khi bạn tìm được vị trí phù hợp.
+Xóa phần tử (Deletion):
+
+Để xóa một nút, bạn cần xử lý ba trường hợp:
+Nút là lá (không có nút con): Xóa nút đơn giản.
+Nút có một nút con: Thay thế nút bị xóa bằng nút con.
+Nút có hai nút con: Tìm nút có giá trị nhỏ nhất ở cây con phải (hoặc lớn nhất ở cây con trái) và thay thế.
+Duyệt cây (Traversal):
+
+Pre-order Traversal (Duyệt trước): Thăm nút gốc trước, sau đó duyệt cây con trái, rồi đến cây con phải.
+In-order Traversal (Duyệt giữa): Duyệt cây con trái trước, sau đó thăm nút gốc, rồi đến cây con phải. Phương pháp này thường được dùng trong cây nhị phân tìm kiếm để lấy các phần tử theo thứ tự tăng dần.
+Post-order Traversal (Duyệt sau): Duyệt cây con trái trước, sau đó đến cây con phải, và cuối cùng là thăm nút gốc.
+
+Cây nhị phân nhỏ hơn được hình thành từ một nút và các nút con của nó. Mỗi nút trong cây có thể được coi là gốc của một cây con.
+Cấp độ (Level):
+
+Cấp độ của một nút được xác định bởi khoảng cách từ nút đó đến gốc. Gốc có cấp độ 0, các con của gốc có cấp độ 1, và cứ tiếp tục như vậy.
+Chiều cao của cây (Height):
+
+Chiều cao của cây là số mức (levels) từ gốc đến nút lá sâu nhất. Chiều cao của cây nhị phân giúp xác định độ sâu của cây.
