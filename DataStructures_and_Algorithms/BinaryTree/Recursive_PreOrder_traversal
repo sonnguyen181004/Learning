@@ -1,0 +1,47 @@
+
+
+
+public void preOrder(TreeNode root) {
+    if (root == null) { // base case
+        return;
+    }
+    System.out.print(root.data + " "); // In giá trị nút hiện tại
+    preOrder(root.left);  // Duyệt nhánh trái
+    preOrder(root.right); // Duyệt nhánh phải
+}
+9--5---4---3--2
+
+
+
+Dòng 2-3: Nếu nút hiện tại là null, tức là đã đến nút lá hoặc cây rỗng, hàm sẽ trả về mà không làm gì thêm.
+Dòng 5: In ra giá trị của nút hiện tại.
+Dòng 6-7: Đệ quy gọi lại hàm preOrder để duyệt lần lượt nhánh trái và nhánh phải của nút hiện tại.
+4. Quá trình duyệt cây
+Giờ ta sẽ đi qua từng bước của quá trình duyệt cây theo pre-order dựa trên cấu trúc của cây:
+
+Bước 1: Bắt đầu từ nút gốc (9)
+In giá trị 9.
+Sau đó duyệt nhánh trái của nút 9, tức là nút 2.
+Bước 2: Đến nút 2
+In giá trị 2.
+Sau đó duyệt nhánh trái của nút 2, tức là nút 4.
+Bước 3: Đến nút 4
+In giá trị 4.
+Nút 4 không có nhánh trái hoặc nhánh phải (đều là null), vì vậy quá trình duyệt nút 4 kết thúc và quay lại nút 2.
+Bước 4: Quay lại nút 2
+Sau khi đã duyệt xong nhánh trái (nút 4), nút 2 không có nhánh phải (null), nên quá trình duyệt nút 2 kết thúc và quay lại nút 9.
+Bước 5: Quay lại nút 9
+Sau khi đã duyệt xong nhánh trái của nút 9, giờ ta sẽ duyệt nhánh phải của nút 9, tức là nút 3.
+Bước 6: Đến nút 3
+In giá trị 3.
+Nút 3 không có nhánh trái hoặc nhánh phải (null), vì vậy quá trình duyệt nút 3 kết thúc.
+Bước 7: Kết thúc quá trình duyệt
+Toàn bộ cây đã được duyệt xong, kết quả là thứ tự duyệt: 9 2 4 3.
+5. Hoạt động của ngăn xếp (call stack)
+Trong duyệt đệ quy, chương trình sử dụng ngăn xếp (stack) để lưu trữ các lời gọi hàm khi duyệt cây. Đối với mỗi lời gọi hàm preOrder, ngăn xếp sẽ lưu trữ trạng thái của nút hiện tại và sẽ quay lui khi gặp null.
+
+Khi hàm preOrder được gọi tại nút 9, trạng thái của hàm được lưu trong ngăn xếp.
+Sau đó tiếp tục gọi hàm tại nút 2, ngăn xếp tiếp tục lưu trạng thái của nút 9 và nút 2.
+Khi duyệt đến nút 4, ngăn xếp lưu thêm trạng thái của nút 4. Vì nút 4 không có nhánh con, chương trình sẽ "pop" trạng thái của nút 4 ra khỏi ngăn xếp và quay lui về nút 2.
+Tương tự như vậy, chương trình tiếp tục quay lui đến nút 9 và duyệt nhánh phải (nút 3).
+Ngăn xếp giúp chương trình nhớ thứ tự các nút cần quay lui sau khi đã duyệt hết nhánh trái và nhánh phải của một nút nào đó.
